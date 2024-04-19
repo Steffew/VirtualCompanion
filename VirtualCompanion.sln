@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualCompanion", "VirtualCompanion\VirtualCompanion.csproj", "{7026B4C0-7235-4D8A-8092-BAD45F2574A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualCompanion", "VirtualCompanion\VirtualCompanion.csproj", "{7026B4C0-7235-4D8A-8092-BAD45F2574A4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualCompanion.Core", "VirtualCompanion.Core\VirtualCompanion.Core.csproj", "{C8096796-0515-4497-A51F-FDE073689033}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualCompanion.Data", "VirtualCompanion.Data\VirtualCompanion.Data.csproj", "{05C7CECB-CBA1-4718-93BE-134E133AEBED}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{7026B4C0-7235-4D8A-8092-BAD45F2574A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7026B4C0-7235-4D8A-8092-BAD45F2574A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7026B4C0-7235-4D8A-8092-BAD45F2574A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8096796-0515-4497-A51F-FDE073689033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8096796-0515-4497-A51F-FDE073689033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8096796-0515-4497-A51F-FDE073689033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8096796-0515-4497-A51F-FDE073689033}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05C7CECB-CBA1-4718-93BE-134E133AEBED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05C7CECB-CBA1-4718-93BE-134E133AEBED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05C7CECB-CBA1-4718-93BE-134E133AEBED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05C7CECB-CBA1-4718-93BE-134E133AEBED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
