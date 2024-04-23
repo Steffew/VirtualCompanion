@@ -2,14 +2,14 @@
 {
     public class Pet
     {
-        public int Id { get; private set; }
-        public string? Name { get; private set; }
-        public float Health { get; private set; }
-        public float Experience { get; private set; }
-        public float Energy { get; private set; }
-        public float Mood { get; private set; }
-        public float Hunger { get; private set; }
-        public float Hygiene { get; private set; }
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public float Health { get; set; }
+        public float Experience { get; set; }
+        public float Energy { get; set; }
+        public float Mood { get; set; }
+        public float Hunger { get; set; }
+        public float Hygiene { get; set; }
 
         public Pet(int id, string name, float health, float experience, float energy, float mood, float hunger, float hygiene)
         {

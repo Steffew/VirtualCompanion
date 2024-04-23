@@ -2,14 +2,14 @@
 {
     public class Item
     {
-        public int Id { get; private set; }
-        public string? Name { get; private set; }
-        public int Cost { get; private set; }
-        public float Experience { get; private set; }
-        public float Energy { get; private set; }
-        public float Mood { get; private set; }
-        public float Hunger { get; private set; }
-        public float Hygiene { get; private set; }
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public int Cost { get; set; }
+        public float Experience { get; set; }
+        public float Energy { get; set; }
+        public float Mood { get; set; }
+        public float Hunger { get; set; }
+        public float Hygiene { get; set; }
 
         public Item(int id, string name, int cost, float experience, float energy, float mood, float hunger, float hygiene)
         {
