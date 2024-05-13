@@ -1,6 +1,6 @@
 ﻿namespace VirtualCompanion.Models
 {
-    public class PetviewModel
+    public class PetViewModel
     {
         public int OwnerId { get; set; }
         public float Health { get; set; }
