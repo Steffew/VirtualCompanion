@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\VirtualCompanion.Core\VirtualCompanion.Core.csproj" />
+    <ProjectReference Include="..\VirtualCompanion.Data\VirtualCompanion.Data.csproj" />
   </ItemGroup>
 
 </Project>
