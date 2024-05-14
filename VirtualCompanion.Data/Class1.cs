@@ -37,5 +37,19 @@ namespace VirtualCompanion.Data
             }
             return items;
         }
+
+        public Item GetItem(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateItem(Item item)
+        {
+            throw new NotImplementedException();
+        }
+        public bool DeleteItem(Item item)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
