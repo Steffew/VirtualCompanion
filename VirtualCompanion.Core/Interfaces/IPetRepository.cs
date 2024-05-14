@@ -1,4 +1,6 @@
-﻿namespace VirtualCompanion.Core.Interfaces
+﻿using VirtualCompanion.Core.Entities;
+
+namespace VirtualCompanion.Core.Interfaces
 {
     public interface IPetRepository
     {
