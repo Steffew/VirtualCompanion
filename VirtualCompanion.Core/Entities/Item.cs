@@ -1,4 +1,4 @@
-﻿namespace VirtualCompanion.Core
+﻿namespace VirtualCompanion.Core.Entities
 {
     public class Item
     {
@@ -13,6 +13,12 @@
 
         public Item(int id, string name, int cost, float experience, float energy, float mood, float hunger, float hygiene)
         {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Name cannot be empty or null.", nameof(name));
+
+            if (cost < 0)
+                throw new ArgumentException("Cost must be a non-negative number.", nameof(cost));
+
             Id = id;
             Name = name;
             Cost = cost;
