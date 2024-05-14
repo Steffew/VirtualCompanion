@@ -1,6 +1,10 @@
+using VirtualCompanion.Core.Interfaces;
+using VirtualCompanion.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<IItemRepository, ItemRepository>();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 var app = builder.Build();
