@@ -1,4 +1,5 @@
-﻿using VirtualCompanion.Core.Entities;
+﻿using MySql.Data.MySqlClient;
+using VirtualCompanion.Core.Entities;
 using VirtualCompanion.Core.Interfaces;
 
 namespace VirtualCompanion.Data
