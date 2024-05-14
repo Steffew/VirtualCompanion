@@ -1,4 +1,4 @@
-﻿namespace VirtualCompanion.Core
+﻿namespace VirtualCompanion.Core.Entities
 {
     public class Pet
     {
