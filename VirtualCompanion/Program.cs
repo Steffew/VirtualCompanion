@@ -4,8 +4,13 @@ using VirtualCompanion.Data;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IItemRepository, ItemRepository>();
+
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+builder.Services.AddScoped<IItemRepository, ItemRepository>(provider =>
+    new ItemRepository(connectionString));
+builder.Services.AddScoped<IPetRepository, PetRepository>(provider =>
+    new PetRepository(connectionString));
 
 var app = builder.Build();
 
