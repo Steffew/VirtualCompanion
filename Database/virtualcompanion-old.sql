@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2024 at 10:34 PM
+-- Generation Time: Apr 17, 2024 at 04:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -61,13 +61,6 @@ CREATE TABLE `owner` (
   `petCapacity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `owner`
---
-
-INSERT INTO `owner` (`id`, `balance`, `petCapacity`) VALUES
-(1, 500, 3);
-
 -- --------------------------------------------------------
 
 --
@@ -75,23 +68,14 @@ INSERT INTO `owner` (`id`, `balance`, `petCapacity`) VALUES
 --
 
 CREATE TABLE `pet` (
-  `id` int(11) NOT NULL,
   `ownerId` int(11) NOT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `health` float DEFAULT NULL,
-  `experience` float DEFAULT NULL,
-  `energy` float DEFAULT NULL,
-  `mood` float DEFAULT NULL,
-  `hunger` float DEFAULT NULL,
-  `hygiene` float DEFAULT NULL
+  `health` float NOT NULL,
+  `experience` float NOT NULL,
+  `energy` float NOT NULL,
+  `mood` float NOT NULL,
+  `hunger` float NOT NULL,
+  `hygiene` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `pet`
---
-
-INSERT INTO `pet` (`id`, `ownerId`, `name`, `health`, `experience`, `energy`, `mood`, `hunger`, `hygiene`) VALUES
-(1, 1, 'Barky', 100, 0, 100, 100, 0, 100);
 
 --
 -- Indexes for dumped tables
@@ -120,8 +104,7 @@ ALTER TABLE `owner`
 -- Indexes for table `pet`
 --
 ALTER TABLE `pet`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_owner_pet` (`ownerId`);
+  ADD PRIMARY KEY (`ownerId`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -137,13 +120,7 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `owner`
 --
 ALTER TABLE `owner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `pet`
---
-ALTER TABLE `pet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
