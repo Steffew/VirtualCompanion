@@ -13,9 +13,32 @@ namespace VirtualCompanion.Data
             _connectionString = connectionString;
         }
 
-        public bool DeletePet(int id)
+        public List<Pet> GetAllPetsByOwnerId(int ownerId)
         {
-            throw new NotImplementedException();
+            var pets = new List<Pet>();
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("SELECT * FROM pet WHERE ownerId = @ownerId", conn);
+                cmd.Parameters.AddWithValue("@ownerId", ownerId);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        pets.Add(new Pet(
+                            reader.GetInt32("id"),
+                            reader.GetInt32("ownerId"),
+                            reader.GetString("name"),
+                            reader.GetFloat("health"),
+                            reader.GetFloat("experience"),
+                            reader.GetFloat("energy"),
+                            reader.GetFloat("mood"),
+                            reader.GetFloat("hunger"),
+                            reader.GetFloat("hygiene")));
+                    }
+                }
+            }
+            return pets;
         }
 
         public List<Pet> GetAllPets()
@@ -44,6 +67,12 @@ namespace VirtualCompanion.Data
             }
             return pets;
         }
+
+        public bool DeletePet(int id)
+        {
+            throw new NotImplementedException();
+        }
+
 
         public Pet GetPet(int id)
         {
