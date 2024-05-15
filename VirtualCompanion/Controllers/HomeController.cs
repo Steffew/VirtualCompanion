@@ -1,21 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using VirtualCompanion.Core.Interfaces;
 using VirtualCompanion.Models;
 
 namespace VirtualCompanion.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IPetRepository _petRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IPetRepository petRepository)
         {
-            _logger = logger;
+            _petRepository = petRepository;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var pets = _petRepository.GetAllPets();
+            return View(pets);
         }
 
         public IActionResult Privacy()
