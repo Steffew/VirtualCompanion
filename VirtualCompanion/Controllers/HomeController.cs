@@ -1,14 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using VirtualCompanion.Core.Interfaces;
 using VirtualCompanion.Models;
 
 namespace VirtualCompanion.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger)
         {
+            _logger = logger;
         }
 
         public IActionResult Index()
