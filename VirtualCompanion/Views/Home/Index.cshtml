@@ -1,10 +1,33 @@
-﻿@model IEnumerable<VirtualCompanion.Core.Entities.Item>
+﻿@model IEnumerable<VirtualCompanion.Core.Entities.Pet>
 
-@{
-    ViewData["Title"] = "Home Page";
-}
+<h1>Pets</h1>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Owner ID</th>
+            <th>Name</th>
+            <th>Health</th>
+            <th>Experience</th>
+            <th>Energy</th>
+            <th>Mood</th>
+            <th>Hunger</th>
+            <th>Hygiene</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var pet in Model)
+    {
+        <tr>
+            <td>@pet.OwnerId</td>
+            <td>@pet.Name</td>
+            <td>@pet.Health</td>
+            <td>@pet.Experience</td>
+            <td>@pet.Energy</td>
+            <td>@pet.Mood</td>
+            <td>@pet.Hunger</td>
+            <td>@pet.Hygiene</td>
+        </tr>
+    }
+    </tbody>
+</table>
