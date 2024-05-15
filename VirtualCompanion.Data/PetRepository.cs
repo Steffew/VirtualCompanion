@@ -30,7 +30,6 @@ namespace VirtualCompanion.Data
                     while (reader.Read())
                     {
                         pets.Add(new Pet(
-                            reader.GetInt32("id"),
                             reader.GetInt32("ownerId"),
                             reader.GetString("name"),
                             reader.GetFloat("health"),
