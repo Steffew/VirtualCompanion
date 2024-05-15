@@ -2,7 +2,8 @@
 {
     public class Pet
     {
-        public int OwnerId { get; set; }
+        public int Id { get; private set; }
+        public int OwnerId { get; private set; }
         public string? Name { get; private set; }
         public float Health { get; private set; }
         public float Experience { get; private set; }
@@ -11,8 +12,9 @@
         public float Hunger { get; private set; }
         public float Hygiene { get; private set; }
 
-        public Pet(int ownerId, string name, float health, float experience, float energy, float mood, float hunger, float hygiene)
+        public Pet(int id, int ownerId, string name, float health, float experience, float energy, float mood, float hunger, float hygiene)
         {
+            Id = id;
             OwnerId = ownerId;
             Name = name;
             Health = health;
