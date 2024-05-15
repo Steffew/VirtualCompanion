@@ -16,9 +16,27 @@ namespace VirtualCompanion.Controllers
 
         public IActionResult Index()
         {
-            var pets = _petRepository.GetAllPets();
-            return View(pets);
+            var petsData = _petRepository.GetAllPets();
+            var petViewModels = petsData.Select(pet => new PetViewModel
+            {
+                OwnerId = pet.OwnerId,
+                Name = pet.Name,
+                Health = pet.Health,
+                Experience = pet.Experience,
+                Energy = pet.Energy,
+                Mood = pet.Mood,
+                Hunger = pet.Hunger,
+                Hygiene = pet.Hygiene
+            }).ToList();
+
+            var model = new PetListViewModel
+            {
+                Pets = petViewModels
+            };
+
+            return View(model);
         }
+
 
         public IActionResult Privacy()
         {
