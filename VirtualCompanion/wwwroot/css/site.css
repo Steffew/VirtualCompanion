@@ -60,26 +60,44 @@ body {
         background-color: rgba(255, 0, 0, 0.1);
     }
 
-/* AddItem page */
-.item-manager-field {
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 4px;
-    border-color: rgba(255, 255, 255, 0.25);
-    color: #F0F4EF;
-    background: rgba(255, 255, 255, 0.25);
-    text-anchor: start;
-    width: 50%;
-    resize: none;
-    vertical-align: top;
-    transition: all ease-in-out 0.25s;
-}
-
-    .item-manager-field:hover {
-        border-color: rgba(255, 255, 255, 0.5);
-        background-color: rgba(255, 255, 255, 0.5);
+    .button.nav {
+        background-color: transparent;
+        border-color: transparent;
+        transition: all 0.5s;
     }
 
-    .item-manager-field:focus {
-        background-color: rgba(255, 255, 255, 0.9);
+
+/* Navbar */
+.navbar {
+    background-color: rgba(0, 0, 0, 0.15);
+    height: 40px;
+    transition: all .5s;
+}
+    .navbar:hover {
+        background-color: rgba(0, 0, 0, 0.25);
+        height: 60px;
+        transition: all 0.5s;
+    }
+
+    .navbar:hover .button.nav {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.25);
+        transition: all 0.5s;
+    }
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, .25) !important;
+    transition: all 0.25s;
+}
+
+    .navbar-brand:hover {
+        color: rgba(255, 255, 255, .75) !important;
+        font-size: 25px;
+    }
+
+    .navbar-brand:active {
+        color: rgba(255, 255, 255, .25) !important;
+        font-size: 24px;
     }
