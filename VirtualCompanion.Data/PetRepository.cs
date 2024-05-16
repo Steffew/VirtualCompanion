@@ -101,7 +101,7 @@ namespace VirtualCompanion.Data
 
         public Pet Get(int id)
         {
-            Pet pet = null;
+            Pet? pet = null;
             using (var conn = new MySqlConnection(_connectionString))
             {
                 conn.Open();
