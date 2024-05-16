@@ -12,5 +12,11 @@ namespace VirtualCompanion.Core
             _petRepository = petRepository;
         }
 
+        void ApplyItemToPet(int petId, Item item)
+        {
+            Pet pet = _petRepository.Get(petId);
+
+            pet.IncreaseValues(item.Experience, item.Energy, item.Mood, item.Hygiene);
+        }
     }
 }
