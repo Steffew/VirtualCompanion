@@ -25,6 +25,15 @@
             Hygiene = hygiene;
         }
 
+        public void IncreaseValues(float experience = 0, float energy = 0, float mood = 0, float hunger = 0, float hygiene = 0)
+        {
+            Experience += experience;
+            Energy += energy;
+            Mood += mood;
+            Hunger += hunger;
+            Hygiene += hygiene;
+        }
+
         public void UseItem(Item item)
         {
             Experience += item.Experience;
