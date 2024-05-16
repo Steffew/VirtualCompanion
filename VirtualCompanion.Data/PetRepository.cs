@@ -68,11 +68,28 @@ namespace VirtualCompanion.Data
             return pets;
         }
 
+        public void Add(Pet pet)
+        {
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("INSERT INTO pet (ownerId, name, health, experience, energy, mood, hunger, hygiene) VALUES (@ownerId, @name, @health, @experience, @energy, @mood, @hunger, @hygiene)", conn);
+                cmd.Parameters.AddWithValue("@ownerId", pet.OwnerId);
+                cmd.Parameters.AddWithValue("@name", pet.Name);
+                cmd.Parameters.AddWithValue("@health", pet.Health);
+                cmd.Parameters.AddWithValue("@experience", pet.Experience);
+                cmd.Parameters.AddWithValue("@energy", pet.Energy);
+                cmd.Parameters.AddWithValue("@mood", pet.Mood);
+                cmd.Parameters.AddWithValue("@hunger", pet.Hunger);
+                cmd.Parameters.AddWithValue("@hygiene", pet.Hygiene);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         public bool Delete(int id)
         {
             throw new NotImplementedException();
         }
-
 
         public Pet GetPet(int id)
         {
