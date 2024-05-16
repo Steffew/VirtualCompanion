@@ -1,0 +1,16 @@
+﻿using VirtualCompanion.Core.Entities;
+using VirtualCompanion.Core.Interfaces;
+
+namespace VirtualCompanion.Core
+{
+    internal class PetService
+    {
+        private readonly IPetRepository _petRepository;
+
+        public PetService(IPetRepository petRepository)
+        {
+            _petRepository = petRepository;
+        }
+
+    }
+}
