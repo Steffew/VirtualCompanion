@@ -13,7 +13,7 @@ namespace VirtualCompanion.Data
             _connectionString = connectionString;
         }
 
-        public List<Item> GetAllItems()
+        public List<Item> GetAll()
         {
             var items = new List<Item>();
             using (var conn = new MySqlConnection(_connectionString))
@@ -39,16 +39,16 @@ namespace VirtualCompanion.Data
             return items;
         }
 
-        public Item GetItem(int id)
+        public Item Get(int id)
         {
             throw new NotImplementedException();
         }
 
-        public bool UpdateItem(Item item)
+        public bool Update(Item item)
         {
             throw new NotImplementedException();
         }
-        public bool DeleteItem(Item item)
+        public bool Delete(Item item)
         {
             throw new NotImplementedException();
         }

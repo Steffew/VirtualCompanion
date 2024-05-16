@@ -15,7 +15,7 @@ namespace VirtualCompanion.Controllers
         // GET: ItemController
         public IActionResult Index()
         {
-            var items = _itemRepository.GetAllItems();
+            var items = _itemRepository.GetAll();
             return View(items);
         }
 
