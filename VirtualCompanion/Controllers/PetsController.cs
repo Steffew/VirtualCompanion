@@ -16,7 +16,7 @@ namespace VirtualCompanion.Controllers
 
         public IActionResult Index()
         {
-            var petsData = _petRepository.GetAll(1); // OwnerId is hard-coded for now, login system not implemented (yet).
+            var petsData = _petRepository.GetAll(ownerId: 1); // OwnerId is hard-coded for now, login system not implemented (yet).
             var petViewModels = petsData.Select(pet => new PetViewModel
             {
                 OwnerId = pet.OwnerId,
