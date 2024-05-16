@@ -99,9 +99,32 @@ namespace VirtualCompanion.Data
             return rowsAffected > 0;
         }
 
-        public Pet GetPet(int id)
+        public Pet Get(int id)
         {
-            throw new NotImplementedException();
+            Pet pet = null;
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("SELECT * FROM pet WHERE id = @id", conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        pet = new Pet(
+                            reader.GetInt32("id"),
+                            reader.GetInt32("ownerId"),
+                            reader.GetString("name"),
+                            reader.GetFloat("health"),
+                            reader.GetFloat("experience"),
+                            reader.GetFloat("energy"),
+                            reader.GetFloat("mood"),
+                            reader.GetFloat("hunger"),
+                            reader.GetFloat("hygiene"));
+                    }
+                }
+            }
+            return pet;
         }
 
         public bool Update(Pet pet)
