@@ -13,7 +13,7 @@ namespace VirtualCompanion.Data
             _connectionString = connectionString;
         }
 
-        public List<Pet> GetAllPetsByOwnerId(int ownerId)
+        public List<Pet> GetAll(int ownerId)
         {
             var pets = new List<Pet>();
             using (var conn = new MySqlConnection(_connectionString))
@@ -41,7 +41,7 @@ namespace VirtualCompanion.Data
             return pets;
         }
 
-        public List<Pet> GetAllPets()
+        public List<Pet> GetAll()
         {
             var pets = new List<Pet>();
             using (var conn = new MySqlConnection(_connectionString))
@@ -68,7 +68,7 @@ namespace VirtualCompanion.Data
             return pets;
         }
 
-        public bool DeletePet(int id)
+        public bool Delete(int id)
         {
             throw new NotImplementedException();
         }
@@ -79,7 +79,7 @@ namespace VirtualCompanion.Data
             throw new NotImplementedException();
         }
 
-        public bool UpdatePet(Pet pet)
+        public bool Update(Pet pet)
         {
             throw new NotImplementedException();
         }

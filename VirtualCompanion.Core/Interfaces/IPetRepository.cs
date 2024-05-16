@@ -4,10 +4,10 @@ namespace VirtualCompanion.Core.Interfaces
 {
     public interface IPetRepository
     {
-        List<Pet> GetAllPets();
-        List<Pet> GetAllPetsByOwnerId(int ownerId);
+        List<Pet> GetAll();
+        List<Pet> GetAll(int ownerId);
         Pet GetPet(int id);
-        bool UpdatePet(Pet pet);
-        bool DeletePet(int id);
+        bool Update(Pet pet);
+        bool Delete(int id);
     }
 }
