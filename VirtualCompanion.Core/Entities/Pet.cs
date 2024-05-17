@@ -29,13 +29,14 @@
             Hygiene = hygiene;
         }
 
-        public void UpdateAttributesByAmount(float experience = 0, float energy = 0, float mood = 0, float hunger = 0, float hygiene = 0)
+        public void UpdateAttributesByAmount(float health = 0, float hunger = 0, float energy = 0, float mood = 0, float hygiene = 0, float experience = 0)
         {
-            Experience += experience;
+            Health += health;
+            Hunger += hunger;
             Energy += energy;
             Mood += mood;
-            Hunger += hunger;
             Hygiene += hygiene;
+            Experience += experience;
 
             ValidateAttributes();
             CheckHealth();
