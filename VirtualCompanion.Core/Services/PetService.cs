@@ -1,7 +1,7 @@
 ﻿using VirtualCompanion.Core.Entities;
 using VirtualCompanion.Core.Interfaces;
 
-namespace VirtualCompanion.Core
+namespace VirtualCompanion.Core.Services
 {
     internal class PetService
     {
