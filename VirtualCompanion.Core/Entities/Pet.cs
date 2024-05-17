@@ -11,6 +11,7 @@
         public float Mood { get; private set; }
         public float Hunger { get; private set; }
         public float Hygiene { get; private set; }
+        public bool IsAlive { get; private set; } = true;
 
         private float minAttributeValue = 0;
         private float maxAttributeValue = 100;
