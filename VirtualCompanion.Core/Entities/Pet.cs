@@ -60,7 +60,7 @@
 
         private void HandleDeath()
         {
-
+            IsAlive = false;
         }
     }
 }
