@@ -1,5 +1,5 @@
 using VirtualCompanion.Core.Interfaces;
-using VirtualCompanion.Data;
+using VirtualCompanion.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

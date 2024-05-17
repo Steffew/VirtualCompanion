@@ -2,7 +2,7 @@
 using VirtualCompanion.Core.Entities;
 using VirtualCompanion.Core.Interfaces;
 
-namespace VirtualCompanion.Data
+namespace VirtualCompanion.Data.Repositories
 {
     public class ItemRepository : IItemRepository
     {

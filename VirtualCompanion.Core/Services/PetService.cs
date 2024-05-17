@@ -12,7 +12,7 @@ namespace VirtualCompanion.Core.Services
             _petRepository = petRepository;
         }
 
-        public void UpdatePet(Pet pet)
+        public void UpdatePet(Pet pet)  
         {
             _petRepository.Update(pet);
         }
