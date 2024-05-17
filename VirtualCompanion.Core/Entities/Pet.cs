@@ -33,14 +33,5 @@
             Hunger += hunger;
             Hygiene += hygiene;
         }
-
-        public void UseItem(Item item)
-        {
-            Experience += item.Experience;
-            Energy += item.Energy;
-            Mood += item.Mood;
-            Hunger += item.Hunger;
-            Hygiene += item.Hygiene;
-        }
     }
 }
