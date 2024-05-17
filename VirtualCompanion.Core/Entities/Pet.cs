@@ -42,6 +42,16 @@
             CheckHealth();
         }
 
+        private void SetAttributes(float health = 0, float hunger = 0, float energy = 0, float mood = 0, float hygiene = 0, float experience = 0)
+        {
+            Health = health;
+            Hunger = hunger;
+            Energy = energy;
+            Mood = mood;
+            Hygiene = hygiene;
+            Experience = experience;
+        }
+
         private void ValidateAttributes()
         {
             Health = Math.Clamp(Health, 0, 100);
