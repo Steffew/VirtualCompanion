@@ -37,6 +37,7 @@
             Hygiene += hygiene;
 
             ValidateAttributes();
+            CheckHealth();
         }
 
         private void ValidateAttributes()
