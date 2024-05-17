@@ -35,6 +35,17 @@
             Mood += mood;
             Hunger += hunger;
             Hygiene += hygiene;
+
+            ValidateAttributes();
+        }
+
+        private void ValidateAttributes()
+        {
+            Health = Math.Clamp(Health, 0, 100);
+            Energy = Math.Clamp(Energy, 0, 100);
+            Mood = Math.Clamp(Mood, 0, 100);
+            Hunger = Math.Clamp(Hunger, 0, 100);
+            Hygiene = Math.Clamp(Hygiene, 0, 100);
         }
     }
 }
