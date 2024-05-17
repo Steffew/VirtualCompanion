@@ -12,6 +12,11 @@ namespace VirtualCompanion.Core
             _petRepository = petRepository;
         }
 
+        void UpdatePet(Pet pet)
+        {
+            _petRepository.Update(pet);
+        }
+
         void ApplyItemToPet(int petId, Item item)
         {
             Pet pet = _petRepository.Get(petId);
