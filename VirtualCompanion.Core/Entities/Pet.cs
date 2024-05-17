@@ -47,5 +47,12 @@
             Hunger = Math.Clamp(Hunger, 0, 100);
             Hygiene = Math.Clamp(Hygiene, 0, 100);
         }
+
+        private void CheckHealth()
+        {
+            if (Health <= 0)
+            {
+            }
+        }
     }
 }
