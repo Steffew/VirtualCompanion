@@ -27,6 +27,7 @@ namespace VirtualCompanion.Data
                         items.Add(new Item(
                             reader.GetInt32("id"),
                             reader.GetString("name"),
+                            reader.GetFloat("health"),
                             reader.GetInt32("cost"),
                             reader.GetFloat("experience"),
                             reader.GetFloat("energy"),
