@@ -52,7 +52,7 @@
 
         private void CheckHealth()
         {
-            if (Health <= 0)
+            if (Health <= 0 && IsAlive)
             {
                 HandleDeath();
             }
