@@ -78,6 +78,7 @@
         private void HandleDeath()
         {
             IsAlive = false;
+            SetAttributes(0, 0, 0, 0, 0, 0, false);
         }
     }
 }
