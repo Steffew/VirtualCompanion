@@ -53,7 +53,13 @@
         {
             if (Health <= 0)
             {
+                HandleDeath();
             }
+        }
+
+        private void HandleDeath()
+        {
+
         }
     }
 }
