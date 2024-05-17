@@ -12,7 +12,6 @@
         public float Hunger { get; private set; }
         public float Hygiene { get; private set; }
 
-
         private float minAttributeValue = 0;
         private float maxAttributeValue = 100;
 
