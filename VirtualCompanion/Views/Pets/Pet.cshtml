@@ -9,30 +9,31 @@
     <div class="col-md-6">
         <div class="details-attribute mb-3 p-2">
             <b>Health: @Model.Health</b>
-            <p>Represents the current well-being and overall vitality of your pet. A higher health value indicates that your pet is in good condition, while lower values may suggest illness or need for care.</p>
+            <p class="details-description">Represents the current well-being and overall vitality of your pet. A higher health value indicates that your pet is in good condition, while lower values may suggest illness or need for care.</p>
         </div>
         <div class="details-attribute mb-3 p-2">
             <b>Experience: @Model.Experience</b>
-            <p>Indicates the knowledge and skills your pet has accumulated. Experience contributes to your pet's development and may unlock new abilities or traits as it increases.</p>
+            <p class="details-description">Indicates the knowledge and skills your pet has accumulated. Experience contributes to your pet's development and may unlock new abilities or traits as it increases.</p>
         </div>
         <div class="details-attribute mb-3 p-2">
             <b>Energy: @Model.Energy</b>
-            <p>Measures how energetic and active your pet is. High energy levels mean your pet is ready for activities and interaction, while low levels may require rest or food to replenish.</p>
+            <p class="details-description">Measures how energetic and active your pet is. High energy levels mean your pet is ready for activities and interaction, while low levels may require rest or food to replenish.</p>
         </div>
     </div>
 
     <div class="col-md-6">
         <div class="details-attribute mb-3 p-2">
             <b>Mood: @Model.Mood</b>
-            <p>Reflects the emotional state of your pet, influencing how it interacts with you and its environment. A positive mood enhances performance and satisfaction, whereas a negative mood might affect its health and energy.</p>
+            <p class="details-description">Reflects the emotional state of your pet, influencing how it interacts with you and its environment. A positive mood enhances performance and satisfaction, whereas a negative mood might affect its health and energy.</p>
         </div>
         <div class="details-attribute mb-3 p-2">
             <b>Hunger: @Model.Hunger</b>
-            <p>Tracks the nutritional status of your pet. Regular feeding is necessary to maintain optimal health and energy levels, with neglect potentially leading to health issues.</p>
+            <p class="details-description">Tracks the nutritional status of your pet. Regular feeding is necessary to maintain optimal health and energy levels, with neglect potentially leading to health issues.</p>
         </div>
         <div class="details-attribute mb-3 p-2">
             <b>Hygiene: @Model.Hygiene</b>
-            <p>Denotes the cleanliness of your pet. Proper hygiene is crucial for preventing disease and maintaining overall health. Regular grooming and baths are recommended.</p>
+            <p class="details-description">Denotes the cleanliness of your pet. Proper hygiene is crucial for preventing disease and maintaining overall health. Regular grooming and baths are recommended.</p>
         </div>
     </div>
 </div>
+<a class="nav-link btn button" href="@Url.Action("Index", "Pets")"><span class="icon material-symbols-rounded me-1">arrow_back</span>Return to my pets</a>
