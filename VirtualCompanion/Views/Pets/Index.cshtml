@@ -1,6 +1,6 @@
 ﻿@model VirtualCompanion.Models.PetListViewModel
 
-<h3>My pets (@Model.Pets.Count)</h3>
+@{ViewData["Title"] = $"My Pets ({Model.Pets.Count})";}
 
 <table class="table table-dark">
     <thead>
