@@ -34,9 +34,26 @@ namespace VirtualCompanion.Data.Repositories
             return owners;
         }
 
-        public Item Get(int id)
+        public Owner Get(int id)
         {
-            throw new NotImplementedException();
+            Owner? owner = null;
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("SELECT * FROM owner WHERE id = @id", conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        owner = new Owner(
+                            reader.GetInt32("id"),
+                            reader.GetInt32("balance"),
+                            reader.GetInt32("petCapacity"));
+                    }
+                }
+            }
+            return owner;
         }
 
         public bool Delete(int id)
