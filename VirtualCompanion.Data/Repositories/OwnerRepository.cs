@@ -56,12 +56,22 @@ namespace VirtualCompanion.Data.Repositories
             return owner;
         }
 
-        public bool Delete(int id)
+        public bool Update(Owner owner)
         {
-            throw new NotImplementedException();
+            int rowsAffected;
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("UPDATE owner SET nickname = @nickname, balance = @balance, petCapacity = @petCapacity WHERE id = @id", conn);
+                cmd.Parameters.AddWithValue("@id", owner.Id);
+                cmd.Parameters.AddWithValue("@balance", owner.Balance);
+                cmd.Parameters.AddWithValue("@petCapacity", owner.PetCapacity);
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            return rowsAffected > 0;
         }
 
-        public bool Update(Owner owner)
+        public bool Delete(int id)
         {
             throw new NotImplementedException();
         }
