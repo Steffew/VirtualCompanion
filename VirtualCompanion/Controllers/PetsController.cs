@@ -41,7 +41,7 @@ namespace VirtualCompanion.Controllers
 
         [HttpGet]
         [Route("Pets/{id}")]
-        public IActionResult Details(int id)
+        public IActionResult Pet(int id)
         {
             var pet = _petRepository.Get(id);
             if (pet == null)
