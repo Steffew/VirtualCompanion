@@ -1,5 +1,9 @@
 ﻿@model VirtualCompanion.Models.PetViewModel
 
+@{
+    ViewData["Title"] = $"{Model.Name}";
+}
+
 <h2>Pet Details</h2>
 <div>
     <h4>@Model.Name</h4>
