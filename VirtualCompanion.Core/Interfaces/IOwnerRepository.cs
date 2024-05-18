@@ -2,7 +2,7 @@
 
 namespace VirtualCompanion.Core.Interfaces
 {
-    internal interface IOwnerRepository
+    public interface IOwnerRepository
     {
         List<Owner> GetAll();
         Item Get(int id);
