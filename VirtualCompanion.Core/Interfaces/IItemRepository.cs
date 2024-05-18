@@ -7,6 +7,6 @@ namespace VirtualCompanion.Core.Interfaces
         List<Item> GetAll();
         Item Get(int id);
         bool Update(Item item);
-        bool Delete(Item item);
+        bool Delete(int id);
     }
 }

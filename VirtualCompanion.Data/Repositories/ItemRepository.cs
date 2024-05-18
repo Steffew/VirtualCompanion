@@ -68,22 +68,22 @@ namespace VirtualCompanion.Data.Repositories
             return item;
         }
 
-        public bool Update(Pet pet)
+        public bool Update(Item item)
         {
             int rowsAffected;
             using (var conn = new MySqlConnection(_connectionString))
             {
                 conn.Open();
-                var cmd = new MySqlCommand("UPDATE pet SET ownerId = @ownerId, name = @name, health = @health, experience = @experience, energy = @energy, mood = @mood, hunger = @hunger, hygiene = @hygiene WHERE id = @id", conn);
-                cmd.Parameters.AddWithValue("@id", pet.Id);
-                cmd.Parameters.AddWithValue("@ownerId", pet.OwnerId);
-                cmd.Parameters.AddWithValue("@name", pet.Name);
-                cmd.Parameters.AddWithValue("@health", pet.Health);
-                cmd.Parameters.AddWithValue("@experience", pet.Experience);
-                cmd.Parameters.AddWithValue("@energy", pet.Energy);
-                cmd.Parameters.AddWithValue("@mood", pet.Mood);
-                cmd.Parameters.AddWithValue("@hunger", pet.Hunger);
-                cmd.Parameters.AddWithValue("@hygiene", pet.Hygiene);
+                var cmd = new MySqlCommand("UPDATE item SET name = @name, health = @health, cost = @cost, experience = @experience, energy = @energy, mood = @mood, hunger = @hunger, hygiene = @hygiene WHERE id = @id", conn);
+                cmd.Parameters.AddWithValue("@id", item.Id);
+                cmd.Parameters.AddWithValue("@name", item.Name);
+                cmd.Parameters.AddWithValue("@health", item.Health);
+                cmd.Parameters.AddWithValue("@cost", item.Cost);
+                cmd.Parameters.AddWithValue("@experience", item.Experience);
+                cmd.Parameters.AddWithValue("@energy", item.Energy);
+                cmd.Parameters.AddWithValue("@mood", item.Mood);
+                cmd.Parameters.AddWithValue("@hunger", item.Hunger);
+                cmd.Parameters.AddWithValue("@hygiene", item.Hygiene);
                 rowsAffected = cmd.ExecuteNonQuery();
             }
             return rowsAffected > 0;
