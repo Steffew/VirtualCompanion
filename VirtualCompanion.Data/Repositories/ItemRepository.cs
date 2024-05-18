@@ -66,15 +66,23 @@ namespace VirtualCompanion.Data.Repositories
                 }
             }
             return item;
-        }
+        }   
 
         public bool Update(Item item)
         {
             throw new NotImplementedException();
         }
-        public bool Delete(Item item)
+        public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            int rowsAffected;
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("DELETE FROM item WHERE id = @id", conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            return rowsAffected > 0;
         }
     }
 }
