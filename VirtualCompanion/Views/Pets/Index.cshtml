@@ -2,30 +2,29 @@
 
 @{ViewData["Title"] = $"My Pets ({Model.Pets.Count})";}
 
-<table class="table table-dark">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Health</th>
-            <th>Experience</th>
-            <th>Energy</th>
-            <th>Mood</th>
-            <th>Hunger</th>
-            <th>Hygiene</th>
-        </tr>
-    </thead>
-    <tbody>
-            @foreach (var pet in Model.Pets)
-            {
-                <tr>
-                    <td scope="col">@pet.Name</td>
-                    <td>@pet.Health</td>
-                    <td>@pet.Experience</td>
-                    <td>@pet.Energy</td>
-                    <td>@pet.Mood</td>
-                    <td>@pet.Hunger</td>
-                    <td>@pet.Hygiene</td>
-                </tr>
-            }
-    </tbody>
-</table>
+<div class="row">
+    @foreach (var pet in Model.Pets)
+    {
+        <div class="col-md-4">
+            <div class="card-pet">
+                <div class="card-body">
+                    <h4 class="card-title">@pet.Name</h4>
+                    <p class="card-text">
+                        Health: @pet.Health<br>
+                        Experience: @pet.Experience<br>
+                        Energy: @pet.Energy<br>
+                        Mood: @pet.Mood<br>
+                        Hunger: @pet.Hunger<br>
+                        Hygiene: @pet.Hygiene
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="btn-group">
+                            <a class="nav-link btn button" href="@Url.Action("Pet", "Pets", new { id = pet.Id })"><span class="icon material-symbols-rounded me-1">info</span>Details</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
