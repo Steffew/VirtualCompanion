@@ -2,6 +2,7 @@
 {
     public class PetViewModel
     {
+        public int Id { get; set; }
         public int OwnerId { get; set; }
         public string Name { get; set; }
         public float Health { get; set; }
