@@ -42,7 +42,30 @@ namespace VirtualCompanion.Data.Repositories
 
         public Item Get(int id)
         {
-            throw new NotImplementedException();
+            Item? item = null;
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("SELECT * FROM item WHERE id = @id", conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        item = new Item(
+                            reader.GetInt32("id"),
+                            reader.GetString("name"),
+                            reader.GetFloat("health"),
+                            reader.GetInt32("cost"),
+                            reader.GetFloat("experience"),
+                            reader.GetFloat("energy"),
+                            reader.GetFloat("mood"),
+                            reader.GetFloat("hunger"),
+                            reader.GetFloat("hygiene"));
+                    }
+                }
+            }
+            return item;
         }
 
         public bool Update(Item item)
