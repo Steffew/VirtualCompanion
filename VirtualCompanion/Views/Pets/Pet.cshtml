@@ -1,0 +1,45 @@
+﻿@model VirtualCompanion.Models.PetViewModel
+
+<h2>Pet Details</h2>
+<div>
+    <h4>@Model.Name</h4>
+    <dl class="row">
+        <dt class="col-sm-2">
+            Health:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Health
+        </dd>
+        <dt class="col-sm-2">
+            Experience:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Experience
+        </dd>
+        <dt class="col-sm-2">
+            Energy:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Energy
+        </dd>
+        <dt class="col-sm-2">
+            Mood:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Mood
+        </dd>
+        <dt class="col-sm-2">
+            Hunger:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Hunger
+        </dd>
+        <dt class="col-sm-2">
+            Hygiene:
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Hygiene
+        </dd>
+    </dl>
+</div>
+<a href="@Url.Action("Index", "Pets")">Back to list</a>
