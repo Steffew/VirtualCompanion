@@ -73,7 +73,15 @@ namespace VirtualCompanion.Data.Repositories
 
         public bool Delete(int id)
         {
-            throw new NotImplementedException();
+            int rowsAffected;
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("DELETE FROM owner WHERE id = @id", conn);
+                cmd.Parameters.AddWithValue("@id", id);
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            return rowsAffected > 0;
         }
     }
 }
