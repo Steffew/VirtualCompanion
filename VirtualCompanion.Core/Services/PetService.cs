@@ -3,7 +3,7 @@ using VirtualCompanion.Core.Interfaces;
 
 namespace VirtualCompanion.Core.Services
 {
-    internal class PetService
+    public class PetService
     {
         private readonly IPetRepository _petRepository;
 
