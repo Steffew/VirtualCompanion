@@ -65,6 +65,32 @@ namespace VirtualCompanion.Controllers
             return View(petViewModel);
         }
 
+        [HttpGet]
+        [Route("Pets/Sell/{id}")]
+        public IActionResult Sell(int id)
+        {
+            var pet = _petRepository.Get(id);
+            if (pet == null)
+            {
+                return NotFound();
+            }
+
+            var petViewModel = new PetViewModel
+            {
+                Id = pet.Id,
+                OwnerId = pet.OwnerId,
+                Name = pet.Name,
+                Health = pet.Health,
+                Experience = pet.Experience,
+                Energy = pet.Energy,
+                Mood = pet.Mood,
+                Hunger = pet.Hunger,
+                Hygiene = pet.Hygiene
+            };
+
+            return View("Sell", petViewModel);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
