@@ -12,6 +12,10 @@ body {
     font-family: 'Work Sans', monospace !important;
 }
 
+.notice {
+    border: solid;
+}
+
 .icon {
     font-size: 20px !important;
 }
