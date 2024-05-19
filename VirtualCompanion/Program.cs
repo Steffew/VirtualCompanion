@@ -1,4 +1,5 @@
 using VirtualCompanion.Core.Interfaces;
+using VirtualCompanion.Core.Services;
 using VirtualCompanion.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,7 @@ builder.Services.AddScoped<IPetRepository, PetRepository>(provider =>
     new PetRepository(connectionString));
 builder.Services.AddScoped<IOwnerRepository, OwnerRepository>(provider =>
     new OwnerRepository(connectionString));
+builder.Services.AddScoped<PetService>();
 
 var app = builder.Build();
 
