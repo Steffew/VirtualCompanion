@@ -2,22 +2,23 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using VirtualCompanion.Core.Entities;
 using VirtualCompanion.Core.Interfaces;
+using VirtualCompanion.Core.Services;
 using VirtualCompanion.Models;
 
 namespace VirtualCompanion.Controllers
 {
     public class PetsController : Controller
     {
-        private readonly IPetRepository _petRepository;
+        private readonly IPetService _petService;
 
-        public PetsController(IPetRepository petRepository)
+        public PetsController(IPetService PetService)
         {
-            _petRepository = petRepository;
+            _petService = PetService;
         }
 
         public IActionResult Index()
         {
-            var petsData = _petRepository.GetAll(ownerId: 1); // OwnerId is hard - coded for now, login system not implemented(yet).
+            var petsData = _petService.GetAllPets(ownerId: 1); // OwnerId is hard - coded for now, login system not implemented(yet).
             var petViewModels = petsData.Select(pet => new PetViewModel
             {
                 Id = pet.Id,
@@ -43,7 +44,7 @@ namespace VirtualCompanion.Controllers
         [Route("Pets/{id}")]
         public IActionResult Pet(int id)
         {
-            var pet = _petRepository.Get(id);
+            var pet = _petService.GetPet(id);
             if (pet == null)
             {
                 return NotFound();
@@ -69,7 +70,7 @@ namespace VirtualCompanion.Controllers
         [Route("Pets/Sell/{id}")]
         public IActionResult Sell(int id)
         {
-            var pet = _petRepository.Get(id);
+            var pet = _petService.GetPet(id);
             if (pet == null)
             {
                 return NotFound();
