@@ -1,67 +1,35 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
-using VirtualCompanion.Core.Entities;
 using VirtualCompanion.Core.Interfaces;
+using VirtualCompanion.Core.Services;
 using VirtualCompanion.Models;
 
 namespace VirtualCompanion.Controllers
 {
     public class PetsController : Controller
     {
-        private readonly IPetRepository _petRepository;
+        private readonly IPetService _petService;
 
-        public PetsController(IPetRepository petRepository)
+        public PetsController(IPetService petService)
         {
-            _petRepository = petRepository;
+            _petService = petService;
         }
 
         public IActionResult Index()
         {
-            var petsData = _petRepository.GetAll(ownerId: 1); // OwnerId is hard - coded for now, login system not implemented(yet).
-            var petViewModels = petsData.Select(pet => new PetViewModel
-            {
-                Id = pet.Id,
-                OwnerId = pet.OwnerId,
-                Name = pet.Name,
-                Health = pet.Health,
-                Experience = pet.Experience,
-                Energy = pet.Energy,
-                Mood = pet.Mood,
-                Hunger = pet.Hunger,
-                Hygiene = pet.Hygiene
-            }).ToList();
-
-            var model = new PetListViewModel
-            {
-                Pets = petViewModels
-            };
-
-            return View(model);
+            var petViewModels = _petService.GetAllPets(1); // OwnerId is still hardcoded for demonstration.
+            return View(petViewModels);
         }
 
         [HttpGet]
         [Route("Pets/{id}")]
         public IActionResult Pet(int id)
         {
-            var pet = _petRepository.Get(id);
-            if (pet == null)
+            var petViewModel = _petService.GetAllPets(id);
+            if (petViewModel == null)
             {
                 return NotFound();
             }
-
-            var petViewModel = new PetViewModel
-            {
-                Id = pet.Id,
-                OwnerId = pet.OwnerId,
-                Name = pet.Name,
-                Health = pet.Health,
-                Experience = pet.Experience,
-                Energy = pet.Energy,
-                Mood = pet.Mood,
-                Hunger = pet.Hunger,
-                Hygiene = pet.Hygiene
-            };
-
             return View(petViewModel);
         }
 
@@ -69,25 +37,11 @@ namespace VirtualCompanion.Controllers
         [Route("Pets/Sell/{id}")]
         public IActionResult Sell(int id)
         {
-            var pet = _petRepository.Get(id);
-            if (pet == null)
+            var petViewModel = _petService.GetPet(id);
+            if (petViewModel == null)
             {
                 return NotFound();
             }
-
-            var petViewModel = new PetViewModel
-            {
-                Id = pet.Id,
-                OwnerId = pet.OwnerId,
-                Name = pet.Name,
-                Health = pet.Health,
-                Experience = pet.Experience,
-                Energy = pet.Energy,
-                Mood = pet.Mood,
-                Hunger = pet.Hunger,
-                Hygiene = pet.Hygiene
-            };
-
             return View("Sell", petViewModel);
         }
 
