@@ -11,6 +11,8 @@ builder.Services.AddScoped<IItemRepository, ItemRepository>(provider =>
     new ItemRepository(connectionString));
 builder.Services.AddScoped<IPetRepository, PetRepository>(provider =>
     new PetRepository(connectionString));
+builder.Services.AddScoped<IOwnerRepository, OwnerRepository>(provider =>
+    new OwnerRepository(connectionString));
 
 var app = builder.Build();
 
