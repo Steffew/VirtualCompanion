@@ -10,9 +10,10 @@
             <div class="text-center">
                 <h3>Are you sure you want to sell @Model.Name?</h3>
                 <p>This action is <b>permanent</b> and cannot be undone!</p>
-                <p>@Model.Name will be sold for ${amount}.</p>
             </div>
             <div class="mt-4 d-flex justify-content-center">
+                <a class="btn button me-3" href="@Url.Action("Pet", "Pets", new { id = Model.Id })"><span class="icon material-symbols-rounded me-1">cancel</span>Cancel</a>
+                <a class="btn button danger" href=""><span class="icon material-symbols-rounded me-1">check</span>Sell @Model.Name for $0</a>
             </div>
         </div>
     </div>
