@@ -92,6 +92,24 @@ namespace VirtualCompanion.Controllers
             return View("Sell", petViewModel);
         }
 
+        [HttpPost]
+        [Route("Pets/ConfirmSell/{id}")]
+        public IActionResult ConfirmSell(int id)
+        {
+            bool result = _petService.DeletePet(id);
+            if (result)
+            {
+                TempData["Message"] = "Pet successfully sold.";
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                TempData["Error"] = "Error selling pet.";
+                return RedirectToAction("Pet", new { id = id });
+            }
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
