@@ -12,6 +12,11 @@ namespace VirtualCompanion.Core.Services
             _petRepository = petRepository;
         }
 
+        public List<Pet> GetAllPets()
+        {
+            return _petRepository.GetAll();
+        }
+
         public void UpdatePet(Pet pet)  
         {
             _petRepository.Update(pet);
