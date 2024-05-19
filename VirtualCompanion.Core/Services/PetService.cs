@@ -37,9 +37,9 @@ namespace VirtualCompanion.Core.Services
             _petRepository.Update(pet);
         }
 
-        public void DeletePet(int petId)
+        public bool DeletePet(int petId)
         {
-            _petRepository.Delete(petId);
+            return _petRepository.Delete(petId);
         }
 
         public void ApplyItemToPet(int petId, Item item)

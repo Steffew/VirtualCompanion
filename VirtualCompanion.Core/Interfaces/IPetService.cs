@@ -10,7 +10,7 @@ namespace VirtualCompanion.Core.Interfaces
         List<Pet> GetAllPets();
         Pet GetPet(int ownerId);
         void UpdatePet(Pet pet);
-        void DeletePet(int petId);
+        bool DeletePet(int petId);
         void ApplyItemToPet(int petId, Item item);
     }
 }
