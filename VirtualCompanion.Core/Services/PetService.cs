@@ -3,7 +3,7 @@ using VirtualCompanion.Core.Interfaces;
 
 namespace VirtualCompanion.Core.Services
 {
-    public class PetService
+    public class PetService : IPetService
     {
         private readonly IPetRepository _petRepository;
 
@@ -25,6 +25,11 @@ namespace VirtualCompanion.Core.Services
         public List<Pet> GetAllPets()
         {
             return _petRepository.GetAll();
+        }
+
+        public Pet GetPet(int petId)
+        {
+            return _petRepository.Get(petId);
         }
 
         public void UpdatePet(Pet pet)  
