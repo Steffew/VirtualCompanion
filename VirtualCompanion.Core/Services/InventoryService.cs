@@ -19,7 +19,7 @@ namespace VirtualCompanion.Core.Services
 
         public void AddItemToInventory(Inventory inventory)
         {
-            throw new NotImplementedException();
+            _inventoryRepository.Add(inventory);
         }
 
         public bool RemoveItemFromInventory(int ownerId, int itemId)
