@@ -8,5 +8,6 @@ namespace VirtualCompanion.Core.Interfaces
         void Add(Inventory inventory);
         bool Update(Inventory inventory);
         bool Delete(int ownerId, int itemId);
+        Inventory GetByOwnerIdAndItemId(int ownerId, int itemId);
     }
 }
