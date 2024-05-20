@@ -29,7 +29,7 @@ namespace VirtualCompanion.Core.Services
 
         public bool UpdateInventoryItem(Inventory inventory)
         {
-            throw new NotImplementedException();
+            return _inventoryRepository.Update(inventory);
         }
 
         public void UseItem(int ownerId, int itemId, int quantity)
