@@ -24,7 +24,7 @@ namespace VirtualCompanion.Core.Services
 
         public bool RemoveItemFromInventory(int ownerId, int itemId)
         {
-            throw new NotImplementedException();
+            return _inventoryRepository.Delete(ownerId, itemId);
         }
 
         public bool UpdateInventoryItem(Inventory inventory)
