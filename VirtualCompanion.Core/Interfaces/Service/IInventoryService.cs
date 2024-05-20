@@ -1,6 +1,6 @@
 ﻿using VirtualCompanion.Core.Entities;
 
-namespace VirtualCompanion.Core.Interfaces
+namespace VirtualCompanion.Core.Interfaces.Service
 {
     public interface IInventoryService
     {

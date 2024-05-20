@@ -1,4 +1,5 @@
-using VirtualCompanion.Core.Interfaces;
+using VirtualCompanion.Core.Interfaces.Repository;
+using VirtualCompanion.Core.Interfaces.Service;
 using VirtualCompanion.Core.Services;
 using VirtualCompanion.Data.Repositories;
 

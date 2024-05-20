@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using VirtualCompanion.Core.Entities;
-using VirtualCompanion.Core.Interfaces;
+using VirtualCompanion.Core.Interfaces.Service;
 using VirtualCompanion.Core.Services;
 using VirtualCompanion.Models;
 

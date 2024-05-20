@@ -1,6 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using VirtualCompanion.Core.Entities;
-using VirtualCompanion.Core.Interfaces;
+using VirtualCompanion.Core.Interfaces.Repository;
 
 namespace VirtualCompanion.Data.Repositories
 {

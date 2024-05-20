@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using VirtualCompanion.Core.Interfaces;
+using VirtualCompanion.Core.Interfaces.Repository;
 
 namespace VirtualCompanion.Controllers
 {

@@ -1,5 +1,6 @@
 ﻿using VirtualCompanion.Core.Entities;
-using VirtualCompanion.Core.Interfaces;
+using VirtualCompanion.Core.Interfaces.Repository;
+using VirtualCompanion.Core.Interfaces.Service;
 
 namespace VirtualCompanion.Core.Services
 {
