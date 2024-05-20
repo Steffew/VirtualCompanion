@@ -1,5 +1,4 @@
 ﻿using VirtualCompanion.Core.Entities;
-using System.Collections.Generic;
 
 namespace VirtualCompanion.Core.Interfaces
 {
