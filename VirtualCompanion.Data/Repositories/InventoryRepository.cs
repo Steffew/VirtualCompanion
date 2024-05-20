@@ -1,9 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
 using VirtualCompanion.Core.Entities;
+using VirtualCompanion.Core.Interfaces;
 
 namespace VirtualCompanion.Data.Repositories
 {
-    public class InventoryRepository
+    public class InventoryRepository : IInventoryRepository
     {
         private readonly string _connectionString;
 
