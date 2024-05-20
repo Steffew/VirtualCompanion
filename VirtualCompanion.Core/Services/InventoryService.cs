@@ -12,12 +12,12 @@ namespace VirtualCompanion.Core.Services
             _inventoryRepository = inventoryRepository;
         }
 
-        public void AddItemToInventory(Inventory inventory)
+        public List<Inventory> GetInventoriesByOwnerId(int ownerId)
         {
-            throw new NotImplementedException();
+            return _inventoryRepository.GetAll(ownerId);
         }
 
-        public List<Inventory> GetInventoriesByOwnerId(int ownerId)
+        public void AddItemToInventory(Inventory inventory)
         {
             throw new NotImplementedException();
         }
