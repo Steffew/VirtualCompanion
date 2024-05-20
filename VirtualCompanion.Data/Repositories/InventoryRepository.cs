@@ -35,5 +35,19 @@ namespace VirtualCompanion.Data.Repositories
             }
             return inventories;
         }
+
+        public void Add(Inventory inventory)
+        {
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("INSERT INTO inventory (itemId, ownerId, quantity) VALUES (@itemId, @ownerId, @quantity)", conn);
+                cmd.Parameters.AddWithValue("@itemId", inventory.ItemId);
+                cmd.Parameters.AddWithValue("@ownerId", inventory.OwnerId);
+                cmd.Parameters.AddWithValue("@quantity", inventory.Quantity);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
