@@ -44,7 +44,7 @@ namespace VirtualCompanion.Core.Services
                 }
                 else
                 {
-                    RemoveItemFromInventory(ownerId, itemI);
+                    RemoveItemFromInventory(ownerId, itemId);
                 }
             }
         }
