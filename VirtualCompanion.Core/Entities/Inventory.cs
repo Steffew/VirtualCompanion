@@ -12,5 +12,10 @@
             OwnerId = ownerId;
             Quantity = quantity;
         }
+
+        public void AdjustQuantity(int amount)
+        {
+            Quantity += amount;
+        }
     }
 }
