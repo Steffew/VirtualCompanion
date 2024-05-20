@@ -37,6 +37,31 @@ namespace VirtualCompanion.Data.Repositories
             return inventories;
         }
 
+        public Inventory GetByOwnerIdAndItemId(int ownerId, int itemId)
+        {
+            Inventory inventory = null;
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("SELECT * FROM inventory WHERE ownerId = @ownerId AND itemId = @itemId LIMIT 1", conn);
+                cmd.Parameters.AddWithValue("@ownerId", ownerId);
+                cmd.Parameters.AddWithValue("@itemId", itemId);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        inventory = new Inventory(
+                            reader.GetInt32("itemId"),
+                            ownerId,
+                            reader.GetInt32("quantity")
+                        );
+                    }
+                }
+            }
+            return inventory;
+        }
+
         public void Add(Inventory inventory)
         {
             using (var conn = new MySqlConnection(_connectionString))
