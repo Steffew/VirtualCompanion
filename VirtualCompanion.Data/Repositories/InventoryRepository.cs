@@ -65,5 +65,20 @@ namespace VirtualCompanion.Data.Repositories
             }
             return rowsAffected > 0;
         }
+
+        public bool Delete(int ownerId, int itemId)
+        {
+            int rowsAffected;
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("DELETE FROM inventory WHERE ownerId = @ownerId AND itemId = @itemId", conn);
+                cmd.Parameters.AddWithValue("@ownerId", ownerId);
+                cmd.Parameters.AddWithValue("@itemId", itemId);
+
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            return rowsAffected > 0;
+        }
     }
 }
