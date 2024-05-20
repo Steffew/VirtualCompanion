@@ -34,7 +34,19 @@ namespace VirtualCompanion.Core.Services
 
         public void UseItem(int ownerId, int itemId, int quantity)
         {
-            throw new NotImplementedException();
+            var inventory = _inventoryRepository.GetByOwnerIdAndItemId(ownerId, itemId);
+            if (inventory != null && inventory.Quantity >= quantity)
+            {
+                inventory.AdjustQuantity(-quantity);
+                if (inventory.Quantity > 0)
+                {
+                    UpdateInventoryItem(inventory);
+                }
+                else
+                {
+                    RemoveItemFromInventory(ownerId, itemI);
+                }
+            }
         }
     }
 }
