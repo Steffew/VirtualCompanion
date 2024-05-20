@@ -49,5 +49,21 @@ namespace VirtualCompanion.Data.Repositories
                 cmd.ExecuteNonQuery();
             }
         }
+
+        public bool Update(Inventory inventory)
+        {
+            int rowsAffected;
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                var cmd = new MySqlCommand("UPDATE inventory SET quantity = @quantity WHERE itemId = @itemId AND ownerId = @ownerId", conn);
+                cmd.Parameters.AddWithValue("@quantity", inventory.Quantity);
+                cmd.Parameters.AddWithValue("@itemId", inventory.ItemId);
+                cmd.Parameters.AddWithValue("@ownerId", inventory.OwnerId);
+
+                rowsAffected = cmd.ExecuteNonQuery();
+            }
+            return rowsAffected > 0;
+        }
     }
 }
