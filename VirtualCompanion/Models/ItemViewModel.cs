@@ -11,10 +11,14 @@
         public float Mood { get; set; }
         public float Hygiene { get; set; }
         public float Experience { get; set; }
+
+        // Extra attributes for Inventory
+        public int Quantity { get; set; }
+        public int OwnerId { get; set; }
     }
 
     public class ItemListViewModel
     {
-        public List<ItemViewModel> Pets { get; set; } = new List<ItemViewModel>();
+        public List<ItemViewModel> Items { get; set; } = new List<ItemViewModel>();
     }
 }
