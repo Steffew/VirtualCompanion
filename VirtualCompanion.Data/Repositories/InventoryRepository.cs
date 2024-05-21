@@ -43,7 +43,7 @@ namespace VirtualCompanion.Data.Repositories
             using (var conn = new MySqlConnection(_connectionString))
             {
                 conn.Open();
-                var cmd = new MySqlCommand("SELECT * FROM inventory WHERE ownerId = @ownerId AND itemId = @itemId LIMIT 1", conn);
+                var cmd = new MySqlCommand("SELECT i.itemId, i.ownerId, i.quantity, item.name, item.description FROM inventory i JOIN items item ON i.itemId = item.id WHERE i.ownerId = @ownerId AND i.itemId = @itemId LIMIT 1", conn);
                 cmd.Parameters.AddWithValue("@ownerId", ownerId);
                 cmd.Parameters.AddWithValue("@itemId", itemId);
 
