@@ -1,6 +1,5 @@
 ﻿@model VirtualCompanion.Models.ItemListViewModel
 
-<h1>Inventory</h1>
 @if (Model.Items.Any())
 {
     <table class="table">
@@ -14,14 +13,18 @@
             @foreach (var item in Model.Items)
             {
                 <tr>
-                    <td>@item.Name</td>
-                    <td>@item.Amount</td>
+                    <td class="text-light">@item.Name</td>
+                    <td class="text-light">@item.Amount</td>
                 </tr>
             }
         </tbody>
     </table>
 }
+
 else
 {
-    <p>No items found.</p>
+    <div class="text-center pt-5">
+        <span class="icon huge material-symbols-rounded me-1">warning</span>
+        <p>User does not exist, or has no items.</p>
+    </div>
 }
