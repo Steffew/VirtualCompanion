@@ -23,7 +23,7 @@ public class InventoryController : Controller
             {
                 Id = i.ItemId,
                 Name = i.ItemName,
-                Quantity = i.Quantity,
+                Quantity = i.Amount,
             }).ToList()
         };
         return View(model);
@@ -41,7 +41,7 @@ public class InventoryController : Controller
         {
             Id = inventoryItem.ItemId,
             OwnerId = inventoryItem.OwnerId,
-            Quantity = inventoryItem.Quantity,
+            Quantity = inventoryItem.Amount,
             Name = inventoryItem.ItemName
         };
 

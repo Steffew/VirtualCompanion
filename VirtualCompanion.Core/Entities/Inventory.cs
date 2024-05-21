@@ -4,20 +4,20 @@
     {
         public int ItemId { get; private set; }
         public int OwnerId { get; private set; }
-        public int Quantity { get; private set; }
+        public int Amount { get; private set; }
         public string ItemName { get; set; }
 
-        public Inventory(int itemId, int ownerId, int quantity, string itemName = "Item")
+        public Inventory(int itemId, int ownerId, int amount, string itemName = "Item")
         {
             ItemId = itemId;
             OwnerId = ownerId;
-            Quantity = quantity;
+            Amount = amount;
             ItemName = itemName;
         }
 
-        public void AdjustQuantity(int amount)
+        public void AdjustAmount(int amount)
         {
-            Quantity += amount;
+            Amount += amount;
         }
     }
 }

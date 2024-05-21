@@ -38,13 +38,13 @@ namespace VirtualCompanion.Core.Services
             return _inventoryRepository.Update(inventory);
         }
 
-        public void UseItem(int ownerId, int itemId, int quantity)
+        public void UseItem(int ownerId, int itemId, int amount)
         {
             var inventory = _inventoryRepository.GetByOwnerIdAndItemId(ownerId, itemId);
-            if (inventory != null && inventory.Quantity >= quantity)
+            if (inventory != null && inventory.Amount >= amount)
             {
-                inventory.AdjustQuantity(-quantity);
-                if (inventory.Quantity > 0)
+                inventory.AdjustAmount(-amount);
+                if (inventory.Amount > 0)
                 {
                     UpdateInventoryItem(inventory);
                 }

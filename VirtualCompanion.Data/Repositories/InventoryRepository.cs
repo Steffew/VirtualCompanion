@@ -29,7 +29,7 @@ namespace VirtualCompanion.Data.Repositories
                         inventories.Add(new Inventory(
                             reader.GetInt32("itemId"),
                             ownerId,
-                            reader.GetInt32("quantity")
+                            reader.GetInt32("amount")
                         ));
                     }
                 }
@@ -43,7 +43,7 @@ namespace VirtualCompanion.Data.Repositories
             using (var conn = new MySqlConnection(_connectionString))
             {
                 conn.Open();
-                var cmd = new MySqlCommand("SELECT i.itemId, i.ownerId, i.quantity, item.name, item.description FROM inventory i JOIN items item ON i.itemId = item.id WHERE i.ownerId = @ownerId AND i.itemId = @itemId LIMIT 1", conn);
+                var cmd = new MySqlCommand("SELECT i.itemId, i.ownerId, i.amount, item.name, item.description FROM inventory i JOIN items item ON i.itemId = item.id WHERE i.ownerId = @ownerId AND i.itemId = @itemId LIMIT 1", conn);
                 cmd.Parameters.AddWithValue("@ownerId", ownerId);
                 cmd.Parameters.AddWithValue("@itemId", itemId);
 
@@ -54,7 +54,7 @@ namespace VirtualCompanion.Data.Repositories
                         inventory = new Inventory(
                             reader.GetInt32("itemId"),
                             ownerId,
-                            reader.GetInt32("quantity")
+                            reader.GetInt32("amount")
                         );
                     }
                 }
@@ -67,10 +67,10 @@ namespace VirtualCompanion.Data.Repositories
             using (var conn = new MySqlConnection(_connectionString))
             {
                 conn.Open();
-                var cmd = new MySqlCommand("INSERT INTO inventory (itemId, ownerId, quantity) VALUES (@itemId, @ownerId, @quantity)", conn);
+                var cmd = new MySqlCommand("INSERT INTO inventory (itemId, ownerId, amount) VALUES (@itemId, @ownerId, @amount)", conn);
                 cmd.Parameters.AddWithValue("@itemId", inventory.ItemId);
                 cmd.Parameters.AddWithValue("@ownerId", inventory.OwnerId);
-                cmd.Parameters.AddWithValue("@quantity", inventory.Quantity);
+                cmd.Parameters.AddWithValue("@amount", inventory.Amount);
 
                 cmd.ExecuteNonQuery();
             }
@@ -82,8 +82,8 @@ namespace VirtualCompanion.Data.Repositories
             using (var conn = new MySqlConnection(_connectionString))
             {
                 conn.Open();
-                var cmd = new MySqlCommand("UPDATE inventory SET quantity = @quantity WHERE itemId = @itemId AND ownerId = @ownerId", conn);
-                cmd.Parameters.AddWithValue("@quantity", inventory.Quantity);
+                var cmd = new MySqlCommand("UPDATE inventory SET amount = @amount WHERE itemId = @itemId AND ownerId = @ownerId", conn);
+                cmd.Parameters.AddWithValue("@amount", inventory.Amount);
                 cmd.Parameters.AddWithValue("@itemId", inventory.ItemId);
                 cmd.Parameters.AddWithValue("@ownerId", inventory.OwnerId);
 
