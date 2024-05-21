@@ -18,6 +18,11 @@ namespace VirtualCompanion.Core.Services
             return _inventoryRepository.GetAll(ownerId);
         }
 
+        public Inventory GetInventoryByOwnerIdAndItemId(int ownerId, int itemId)
+        {
+            return _inventoryRepository.GetByOwnerIdAndItemId(ownerId, itemId);
+        }
+
         public void AddItemToInventory(Inventory inventory)
         {
             _inventoryRepository.Add(inventory);
