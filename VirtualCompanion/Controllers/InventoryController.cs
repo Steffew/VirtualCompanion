@@ -14,7 +14,7 @@ public class InventoryController : Controller
 
     [HttpGet]
     [Route("Inventory/Owner/{ownerId}")]
-    public IActionResult OwnerInventory(int ownerId)
+    public IActionResult Index(int ownerId)
     {
         var inventoryItems = _inventoryService.GetInventoriesByOwnerId(ownerId);
         var model = new ItemListViewModel
@@ -23,7 +23,7 @@ public class InventoryController : Controller
             {
                 Id = i.ItemId,
                 Name = i.ItemName,
-                Quantity = i.Amount,
+                Amount = i.Amount,
             }).ToList()
         };
         return View(model);
@@ -41,7 +41,7 @@ public class InventoryController : Controller
         {
             Id = inventoryItem.ItemId,
             OwnerId = inventoryItem.OwnerId,
-            Quantity = inventoryItem.Amount,
+            Amount = inventoryItem.Amount,
             Name = inventoryItem.ItemName
         };
 
