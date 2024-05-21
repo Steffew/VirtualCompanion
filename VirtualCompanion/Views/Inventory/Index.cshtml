@@ -1,8 +1,6 @@
 ﻿@model VirtualCompanion.Models.ItemListViewModel
 
-@{
-    ViewData["Title"] = $"Inventory ({Model.Items.Count})";
-}
+@{ViewData["Title"] = $"Inventory ({Model.Items.Count})";}
 
 @if (Model.Items.Any())
 {
