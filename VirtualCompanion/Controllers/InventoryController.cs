@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using VirtualCompanion.Core.Interfaces.Service;
 using VirtualCompanion.Models;
-using System.Linq;
 
 public class InventoryController : Controller
 {
