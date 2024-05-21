@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2024 at 10:34 PM
+-- Generation Time: May 21, 2024 at 09:04 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -41,6 +41,7 @@ CREATE TABLE `inventory` (
 
 CREATE TABLE `item` (
   `id` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
   `cost` int(11) NOT NULL,
   `experience` float NOT NULL,
   `energy` float NOT NULL,
@@ -91,7 +92,8 @@ CREATE TABLE `pet` (
 --
 
 INSERT INTO `pet` (`id`, `ownerId`, `name`, `health`, `experience`, `energy`, `mood`, `hunger`, `hygiene`) VALUES
-(1, 1, 'Barky', 100, 0, 100, 100, 0, 100);
+(1, 1, 'Barky', 100, 0, 100, 100, 0, 100),
+(2, 1, 'Tikwa', 10, 0, 50, 90, 20, 30);
 
 --
 -- Indexes for dumped tables
@@ -143,7 +145,7 @@ ALTER TABLE `owner`
 -- AUTO_INCREMENT for table `pet`
 --
 ALTER TABLE `pet`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
