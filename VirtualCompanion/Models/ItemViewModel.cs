@@ -13,7 +13,7 @@
         public float Experience { get; set; }
 
         // Extra attributes for Inventory
-        public int Quantity { get; set; }
+        public int Amount { get; set; }
         public int OwnerId { get; set; }
     }
 
