@@ -9,13 +9,15 @@ builder.Services.AddControllersWithViews();
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
-builder.Services.AddScoped<IItemRepository, ItemRepository>(provider =>
-    new ItemRepository(connectionString));
-builder.Services.AddScoped<IPetRepository, PetRepository>(provider =>
-    new PetRepository(connectionString));
-builder.Services.AddScoped<IOwnerRepository, OwnerRepository>(provider =>
-    new OwnerRepository(connectionString));
+// Repositories
+builder.Services.AddScoped<IOwnerRepository, OwnerRepository>(provider => new OwnerRepository(connectionString));
+builder.Services.AddScoped<IPetRepository, PetRepository>(provider => new PetRepository(connectionString));
+builder.Services.AddScoped<IItemRepository, ItemRepository>(provider => new ItemRepository(connectionString));
+builder.Services.AddScoped<IInventoryRepository, InventoryRepository>(provider => new InventoryRepository(connectionString));
+
+// Services
 builder.Services.AddScoped<IPetService, PetService>();
+builder.Services.AddScoped<IInventoryService, InventoryService>();
 
 var app = builder.Build();
 
