@@ -8,7 +8,7 @@ namespace VirtualCompanion.Core.Interfaces.Service
         Inventory GetInventoryByOwnerIdAndItemId(int ownerId, int itemId);
         void AddItemToInventory(Inventory inventory);
         bool UpdateInventoryItem(Inventory inventory);
-        bool RemoveItemFromInventory(int ownerId, int itemId);
-        void UseItem(int ownerId, int itemId, int quantity);
+        bool RemoveItemFromInventory(Owner owner, Item item);
+        void UseItem(Owner owner, Item item, int quantity);
     }
 }

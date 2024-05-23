@@ -28,9 +28,9 @@ namespace VirtualCompanion.Core.Services
             _inventoryRepository.Add(inventory);
         }
 
-        public bool RemoveItemFromInventory(int ownerId, int itemId)
+        public bool RemoveItemFromInventory(Owner owner, Item item)
         {
-            return _inventoryRepository.Delete(ownerId, itemId);
+            return _inventoryRepository.Delete(owner.Id, item.Id);
         }
 
         public bool UpdateInventoryItem(Inventory inventory)
@@ -38,9 +38,9 @@ namespace VirtualCompanion.Core.Services
             return _inventoryRepository.Update(inventory);
         }
 
-        public void UseItem(int ownerId, int itemId, int amount)
+        public void UseItem(Owner owner, Item item, int amount)
         {
-            var inventory = _inventoryRepository.GetByOwnerIdAndItemId(ownerId, itemId);
+            var inventory = _inventoryRepository.GetByOwnerIdAndItemId(owner.Id, item.Id);
             if (inventory != null && inventory.Amount >= amount)
             {
                 inventory.AdjustAmount(-amount);
@@ -50,7 +50,7 @@ namespace VirtualCompanion.Core.Services
                 }
                 else
                 {
-                    RemoveItemFromInventory(ownerId, itemId);
+                    RemoveItemFromInventory(owner, item);
                 }
             }
         }
