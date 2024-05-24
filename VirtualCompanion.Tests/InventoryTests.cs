@@ -34,5 +34,7 @@ namespace VirtualCompanion.Test
 
             Assert.Equal(0, inventoryService.GetInventoriesByOwnerId(1).Count);
         }
+
+        //todo: Add more tests, GetItem etc.
     }
 }
