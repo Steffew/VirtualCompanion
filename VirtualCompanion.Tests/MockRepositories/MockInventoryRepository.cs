@@ -4,7 +4,12 @@ namespace VirtualCompanion.Test.MockRepositories
 {
     public class MockInventoryRepository : IInventoryRepository
     {
-        private readonly List<Inventory> _inventories = new List<Inventory>();
+        private List<Inventory> _inventories = new List<Inventory>();
+        
+        public MockInventoryRepository(List<Inventory> inventories)
+        {
+            _inventories = inventories;
+        }
 
         public List<Inventory> GetAll(int ownerId)
         {
