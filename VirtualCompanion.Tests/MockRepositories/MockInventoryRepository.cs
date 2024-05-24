@@ -1,6 +1,6 @@
 ﻿using VirtualCompanion.Core.Entities;
 
-namespace VirtualCompanion.Test
+namespace VirtualCompanion.Test.MockRepositories
 {
     public class MockInventoryRepository : IInventoryRepository
     {
