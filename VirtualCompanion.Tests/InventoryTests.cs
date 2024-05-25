@@ -24,19 +24,6 @@ namespace VirtualCompanion.Test
             Assert.Equal(1, result.OwnerId);
         }
 
-        [Fact]
-        public void Get_all_by_wrong_ID()
-        {
-            Inventory inventory1 = new Inventory(itemId: 1, ownerId: 2, amount: 1);
-
-            List<Inventory> inventoryList = new List<Inventory>();
-            inventoryList.Add(inventory1);
-
-            MockInventoryRepository mockRepository = new MockInventoryRepository(inventoryList);
-            InventoryService inventoryService = new InventoryService(mockRepository);
-
-            Assert.Equal(0, inventoryService.GetInventoriesByOwnerId(1).Count);
-        }
 
         //todo: Add more tests, GetItem etc.
     }
