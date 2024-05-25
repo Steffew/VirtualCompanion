@@ -76,5 +76,27 @@ namespace VirtualCompanion.Test
             Assert.True(result);
             Assert.Equal(10, inventories.First().Amount);
         }
+
+        [Fact]
+        public void RemoveItemFromInventory_Success()
+        {
+            // Arrange
+            var owner = new Owner(id: 1, balance: 100, petCapacity: 5);
+            var item = new Item(id: 1, name: "ItemToRemove", health: 0, cost: 20, experience: 0, energy: 0, mood: 0, hunger: 0, hygiene: 0);
+
+            var inventory = new Inventory(itemId: 1, ownerId: 1, amount: 10, itemName: "ItemToRemove");
+            var inventories = new List<Inventory> { inventory };
+
+            var mockRepository = new MockInventoryRepository(inventories);
+            var inventoryService = new InventoryService(mockRepository);
+
+            // Act
+            var result = inventoryService.RemoveItemFromInventory(owner, item);
+
+            // Assert
+            Assert.True(result);
+            Assert.DoesNotContain(inventory, inventories);
+        }
+
     }
 }
