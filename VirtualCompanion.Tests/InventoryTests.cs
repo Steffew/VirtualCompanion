@@ -4,7 +4,7 @@ namespace VirtualCompanion.Test
     public class InventoryTests
     {
         [Fact]
-        public void Get_all_by_correct_ID()
+        public void GetInventoryByOwnerIdAndItemId_Found()
         {
             // Arrange
             var inventories = new List<Inventory>
