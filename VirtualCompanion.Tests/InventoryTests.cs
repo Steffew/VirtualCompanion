@@ -58,5 +58,23 @@ namespace VirtualCompanion.Test
             Assert.Contains(newInventory, inventories);
             Assert.Equal(1, inventories.Count);
         }
+
+        [Fact]
+        public void UpdateInventoryItem_Success()
+        {
+            // Arrange
+            var inventory = new Inventory(itemId: 1, ownerId: 1, amount: 5, itemName: "OriginalItem");
+            var inventories = new List<Inventory> { inventory };
+            var mockRepository = new MockInventoryRepository(inventories);
+            var inventoryService = new InventoryService(mockRepository);
+
+            // Act
+            inventory.AdjustAmount(5);
+            var result = inventoryService.UpdateInventoryItem(inventory);
+
+            // Assert
+            Assert.True(result);
+            Assert.Equal(10, inventories.First().Amount);
+        }
     }
 }
