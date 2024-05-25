@@ -24,7 +24,22 @@ namespace VirtualCompanion.Test
             Assert.Equal(1, result.OwnerId);
         }
 
+        [Fact]
+        public void GetInventoryByOwnerIdAndItemId_NotFound()
+        {
+            // Arrange
+            var inventories = new List<Inventory>
+        {
+            new Inventory(itemId: 1, ownerId: 1, amount: 10, itemName: "Item1")
+        };
+            var mockRepository = new MockInventoryRepository(inventories);
+            var inventoryService = new InventoryService(mockRepository);
 
-        //todo: Add more tests, GetItem etc.
+            // Act
+            var result = inventoryService.GetInventoryByOwnerIdAndItemId(1, 3);
+
+            // Assert
+            Assert.Null(result);
+        }
     }
 }
