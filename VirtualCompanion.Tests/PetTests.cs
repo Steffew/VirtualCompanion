@@ -82,5 +82,23 @@ namespace VirtualCompanion.Test
             Assert.Equal(25, pet.Experience);
         }
 
+        [Fact]
+        public void DeletePet_RemovesPetSuccessfully()
+        {
+            // Arrange
+            var pets = new List<Pet>
+            {
+                new Pet(id: 1, ownerId: 1, "Pet1", health: 50, experience: 20, energy: 60, mood: 80, hunger: 70, hygiene: 90)
+            };
+            var mockRepository = new MockPetRepository(pets);
+            var petService = new PetService(mockRepository);
+
+            // Act
+            var result = petService.DeletePet(1);
+
+            // Assert
+            Assert.True(result);
+            Assert.DoesNotContain(pets, p => p.Id == 1);
+        }
     }
 }
