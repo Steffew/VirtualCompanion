@@ -60,5 +60,27 @@ namespace VirtualCompanion.Test
             Assert.NotNull(result);
             Assert.Equal("Pet1", result.Name);
         }
+
+        [Fact]
+        public void UpdatePet_SuccessfulUpdate()
+        {
+            // Arrange
+            var pets = new List<Pet>
+            {
+                new Pet(id: 1, ownerId: 1, "Pet1", health: 100, experience: 100, energy: 100, mood: 100, hunger: 100, hygiene: 100)
+            };
+            var mockRepository = new MockPetRepository(pets);
+            var petService = new PetService(mockRepository);
+            var updatedPet = new Pet(id: 1, ownerId: 1, "Pet1", health: 55, experience: 25, energy: 100, mood: 100, hunger: 100, hygiene: 100);
+
+            // Act
+            petService.UpdatePet(updatedPet);
+
+            // Assert
+            var pet = pets.First();
+            Assert.Equal(55, pet.Health);
+            Assert.Equal(25, pet.Experience);
+        }
+
     }
 }
