@@ -41,5 +41,24 @@ namespace VirtualCompanion.Test
             Assert.Single(result);
             Assert.Equal("Pet1", result.First().Name);
         }
+
+        [Fact]
+        public void GetPet_ReturnsCorrectPet()
+        {
+            // Arrange
+            var pets = new List<Pet>
+            {
+                new Pet(id: 1, ownerId: 1, "Pet1", health: 50, experience: 20, energy: 60, mood: 80, hunger: 70, hygiene: 90),
+            };
+            var mockRepository = new MockPetRepository(pets);
+            var petService = new PetService(mockRepository);
+
+            // Act
+            var result = petService.GetPet(1);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal("Pet1", result.Name);
+        }
     }
 }
