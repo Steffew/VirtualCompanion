@@ -27,19 +27,17 @@
         _pets.Add(pet);
     }
 
+
     public bool Update(Pet pet)
     {
         var existingPet = _pets.FirstOrDefault(p => p.Id == pet.Id);
-        if (existingPet == null) return false;
+        if (existingPet != null)
+        {
+            existingPet.SetAttributes(pet.Health, pet.Hunger, pet.Energy, pet.Mood, pet.Hygiene, pet.Experience, false);
 
-        existingPet.Name = pet.Name;
-        existingPet.Health = pet.Health;
-        existingPet.Experience = pet.Experience;
-        existingPet.Energy = pet.Energy;
-        existingPet.Mood = pet.Mood;
-        existingPet.Hunger = pet.Hunger;
-        existingPet.Hygiene = pet.Hygiene;
-        return true;
+            return true;
+        }
+        return false;
     }
 
     public bool Delete(int id)
