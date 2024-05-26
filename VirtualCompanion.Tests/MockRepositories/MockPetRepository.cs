@@ -24,8 +24,6 @@
 
     public void Add(Pet pet)
     {
-        var maxId = _pets.Max(p => p.Id);
-        pet.Id = maxId + 1;
         _pets.Add(pet);
     }
 
