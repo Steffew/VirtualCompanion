@@ -13,9 +13,6 @@
         public float Hygiene { get; private set; }
         public bool IsAlive { get; private set; } = true;
 
-        private float minAttributeValue = 0;
-        private float maxAttributeValue = 100;
-
         public Pet(int id, int ownerId, string name, float health, float experience, float energy, float mood, float hunger, float hygiene)
         {
             Id = id;
