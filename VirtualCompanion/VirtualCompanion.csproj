@@ -15,4 +15,16 @@
     <ProjectReference Include="..\VirtualCompanion.Data\VirtualCompanion.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Error.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Error.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Error.cshtml" />
+  </ItemGroup>
+
 </Project>

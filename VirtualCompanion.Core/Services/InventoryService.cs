@@ -1,4 +1,5 @@
 ﻿using VirtualCompanion.Core.Entities;
+using VirtualCompanion.Core.Exceptions;
 using VirtualCompanion.Core.Interfaces.Repository;
 using VirtualCompanion.Core.Interfaces.Service;
 
@@ -15,7 +16,14 @@ namespace VirtualCompanion.Core.Services
 
         public List<Inventory> GetInventoriesByOwnerId(int ownerId)
         {
-            return _inventoryRepository.GetAll(ownerId);
+            try
+            {
+                return _inventoryRepository.GetAll(ownerId);
+            }
+            catch (InventoryException ex)
+            {
+                throw ex;
+            }
         }
 
         public Inventory GetInventoryByOwnerIdAndItemId(int ownerId, int itemId)

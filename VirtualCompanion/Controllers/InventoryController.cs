@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
+using VirtualCompanion.Core.Exceptions;
 using VirtualCompanion.Core.Interfaces.Service;
 using VirtualCompanion.Models;
 
@@ -15,17 +17,28 @@ public class InventoryController : Controller
     [Route("Inventory/Owner/{ownerId}")]
     public IActionResult Index(int ownerId)
     {
-        var inventoryItems = _inventoryService.GetInventoriesByOwnerId(ownerId);
-        var model = new ItemListViewModel
+        try
         {
-            Items = inventoryItems.Select(i => new ItemViewModel
+            var inventoryItems = _inventoryService.GetInventoriesByOwnerId(ownerId);
+            var model = new ItemListViewModel
             {
-                Id = i.ItemId,
-                Name = i.ItemName,
-                Amount = i.Amount,
-            }).ToList()
-        };
-        return View(model);
+                Items = inventoryItems.Select(i => new ItemViewModel
+                {
+                    Id = i.ItemId,
+                    Name = i.ItemName,
+                    Amount = i.Amount,
+                }).ToList()
+            };
+            return View(model);
+        }
+        catch (InventoryException ex)
+        {
+            return View("Error", new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+                Message = $"Unable to load inventory. Please try again later. Error: {ex.Message}"
+            });
+        }
     }
 
     [HttpGet]
