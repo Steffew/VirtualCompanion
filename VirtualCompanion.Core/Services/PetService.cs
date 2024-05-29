@@ -17,7 +17,7 @@ namespace VirtualCompanion.Core.Services
         {
             if (pet == null)
             {
-                throw new ArgumentNullException(nameof(pet), "Pet cannot be null.");
+                throw new ArgumentNullException(nameof(pet), "Pet cannot be null!");
             }
             if (string.IsNullOrEmpty(pet.Name))
             {
@@ -55,7 +55,20 @@ namespace VirtualCompanion.Core.Services
 
         public void UpdatePet(Pet pet)  
         {
-            _petRepository.Update(pet);
+            if (pet == null)
+            {
+                throw new ArgumentNullException(nameof(pet), "Pet cannot be null!");
+            }
+
+            if (pet.Id <= 0)
+            {
+                throw new ArgumentException("Pet ID cannot be negative!", nameof(pet));
+            }
+
+            if (!_petRepository.Update(pet))
+            {
+                throw new InvalidOperationException($"Update failed, pet '{pet.Name}' with ID {pet.Id} might not exist.");
+            }
         }
 
         public bool DeletePet(int petId)
