@@ -73,6 +73,11 @@ namespace VirtualCompanion.Core.Services
 
         public bool DeletePet(int petId)
         {
+            if (petId <= 0)
+            {
+                throw new ArgumentException("Pet ID must be greater than zero.", nameof(petId));
+            }
+
             return _petRepository.Delete(petId);
         }
 
