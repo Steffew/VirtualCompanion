@@ -60,7 +60,7 @@
             }
         }
 
-        private void ValidateAttributes()
+        public void ValidateAttributes()
         {
             Health = Math.Clamp(Health, 0, 100);
             Energy = Math.Clamp(Energy, 0, 100);
@@ -69,7 +69,7 @@
             Hygiene = Math.Clamp(Hygiene, 0, 100);
         }
 
-        private void CheckHealth()
+        public void CheckHealth()
         {
             if (Health <= 0 && IsAlive)
             {
