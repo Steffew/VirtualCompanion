@@ -15,6 +15,15 @@ namespace VirtualCompanion.Core.Services
 
         public void CreatePet(Pet pet)
         {
+            if (pet == null)
+            {
+                throw new ArgumentNullException(nameof(pet), "Pet cannot be null.");
+            }
+            if (string.IsNullOrEmpty(pet.Name))
+            {
+                pet.ChangeName("Pet");
+            }
+
             _petRepository.Add(pet);
         }
 
