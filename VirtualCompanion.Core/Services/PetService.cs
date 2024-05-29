@@ -60,10 +60,8 @@ namespace VirtualCompanion.Core.Services
                 throw new ArgumentNullException(nameof(pet), "Pet cannot be null!");
             }
 
-            if (pet.Id <= 0)
-            {
-                throw new ArgumentException("Pet ID cannot be negative!", nameof(pet));
-            }
+            pet.ValidateAttributes();
+            pet.CheckHealth();
 
             if (!_petRepository.Update(pet))
             {
