@@ -75,7 +75,7 @@ namespace VirtualCompanion.Core.Services
         {
             if (petId <= 0)
             {
-                throw new ArgumentException("Pet ID must be greater than zero.", nameof(petId));
+                throw new ArgumentException("Pet ID cannot be negative!", nameof(petId));
             }
 
             return _petRepository.Delete(petId);
