@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using VirtualCompanion.Core.Entities;
+using VirtualCompanion.Core.Exceptions;
 using VirtualCompanion.Core.Interfaces.Repository;
 
 namespace VirtualCompanion.Data.Repositories
@@ -18,7 +19,15 @@ namespace VirtualCompanion.Data.Repositories
             var inventories = new List<Inventory>();
             using (var conn = new MySqlConnection(_connectionString))
             {
-                conn.Open();
+                try
+                {
+                    conn.Open();
+                }
+                catch (MySqlException ex)
+                {
+                    throw new InventoryException("Failed to connect to the database: " + ex.Message);
+                }
+
                 var cmd = new MySqlCommand(
                     "SELECT i.itemId, i.ownerId, i.amount, item.name FROM inventory i JOIN item ON i.itemId = item.id WHERE i.ownerId = @ownerId", conn);
                 cmd.Parameters.AddWithValue("@ownerId", ownerId);
