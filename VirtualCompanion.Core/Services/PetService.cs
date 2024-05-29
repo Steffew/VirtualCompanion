@@ -39,7 +39,18 @@ namespace VirtualCompanion.Core.Services
 
         public Pet GetPet(int petId)
         {
-            return _petRepository.Get(petId);
+            if (petId <= 0)
+            {
+                throw new ArgumentException("Pet ID cannot be negative!", nameof(petId));
+            }
+
+            Pet pet = _petRepository.Get(petId);
+            if (pet == null)
+            {
+                throw new InvalidOperationException($"No pet found with ID {petId}!");
+            }
+
+            return pet;
         }
 
         public void UpdatePet(Pet pet)  
