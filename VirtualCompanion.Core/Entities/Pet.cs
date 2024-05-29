@@ -26,6 +26,11 @@
             Hygiene = hygiene;
         }
 
+        public void ChangeName(string name)
+        {
+            Name = name;
+        }
+
         public void UpdateAttributesByAmount(float health = 0, float hunger = 0, float energy = 0, float mood = 0, float hygiene = 0, float experience = 0)
         {
             Health += health;
