@@ -1,4 +1,5 @@
 ﻿using VirtualCompanion.Core.Entities;
+using VirtualCompanion.Core.Exceptions;
 using VirtualCompanion.Core.Interfaces.Repository;
 using VirtualCompanion.Core.Interfaces.Service;
 
@@ -29,28 +30,49 @@ namespace VirtualCompanion.Core.Services
 
         public List<Pet> GetAllPets(int ownerId)
         {
-            return _petRepository.GetAll(ownerId);
+            try
+            {
+                return _petRepository.GetAll(ownerId);
+            }
+            catch (PetException ex)
+            {
+                throw new PetException("Retreiving pets failed, contact administrator", ex);
+            }
         }
 
         public List<Pet> GetAllPets()
         {
-            return _petRepository.GetAll();
+            try
+            {
+                return _petRepository.GetAll();
+            }
+            catch (PetException ex)
+            {
+                throw new PetException("Retreiving pets failed, contact administrator", ex);
+            }
         }
 
         public Pet GetPet(int petId)
         {
-            if (petId <= 0)
+            try
             {
-                throw new ArgumentException("Pet ID cannot be negative!", nameof(petId));
-            }
+                if (petId <= 0)
+                {
+                    throw new ArgumentException("Pet ID cannot be negative!", nameof(petId));
+                }
 
-            Pet pet = _petRepository.Get(petId);
-            if (pet == null)
+                Pet pet = _petRepository.Get(petId);
+                if (pet == null)
+                {
+                    throw new InvalidOperationException($"No pet found with ID {petId}!");
+                }
+
+                return pet;
+            }
+            catch (PetException ex)
             {
-                throw new InvalidOperationException($"No pet found with ID {petId}!");
+                throw new PetException("Retreiving pet failed, contact administrator", ex);
             }
-
-            return pet;
         }
 
         public void UpdatePet(Pet pet)  
@@ -65,7 +87,7 @@ namespace VirtualCompanion.Core.Services
 
             if (!_petRepository.Update(pet))
             {
-                throw new InvalidOperationException($"Update failed, pet '{pet.Name}' with ID {pet.Id} might not exist.");
+                throw new PetException($"Update failed, pet '{pet.Name}' with ID {pet.Id} might not exist.");
             }
         }
 
