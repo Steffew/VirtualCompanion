@@ -36,7 +36,7 @@ public class InventoryController : Controller
             return View("Error", new ErrorViewModel
             {
                 RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
-                Message = $"Unable to load inventory. Please try again later. Error: {ex.Message}"
+                Message = ex.Message
             });
         }
     }
@@ -45,18 +45,29 @@ public class InventoryController : Controller
     [Route("Inventory/Details/{ownerId}/{itemId}")]
     public IActionResult Details(int ownerId, int itemId)
     {
-        var inventoryItem = _inventoryService.GetInventoryByOwnerIdAndItemId(ownerId, itemId);
-        if (inventoryItem == null)
-            return NotFound();
-
-        var viewModel = new ItemViewModel
+        try
         {
-            Id = inventoryItem.ItemId,
-            OwnerId = inventoryItem.OwnerId,
-            Amount = inventoryItem.Amount,
-            Name = inventoryItem.ItemName
-        };
+            var inventoryItem = _inventoryService.GetInventoryByOwnerIdAndItemId(ownerId, itemId);
+            if (inventoryItem == null)
+                return NotFound();
 
-        return View("Details", viewModel);
+            var viewModel = new ItemViewModel
+            {
+                Id = inventoryItem.ItemId,
+                OwnerId = inventoryItem.OwnerId,
+                Amount = inventoryItem.Amount,
+                Name = inventoryItem.ItemName
+            };
+
+            return View("Details", viewModel);
+        }
+        catch (InventoryException ex)
+        {
+            return View("Error", new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+                Message = ex.Message
+            }); 
+        }
     }
 }
