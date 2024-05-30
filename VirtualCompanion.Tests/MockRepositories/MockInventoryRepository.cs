@@ -5,7 +5,7 @@ namespace VirtualCompanion.Test.MockRepositories
     public class MockInventoryRepository : IInventoryRepository
     {
         private List<Inventory> _inventories = new List<Inventory>();
-        
+        // todo: Test ALL outcomes, even exceptions from the service class, add params to methods to test exceptions
         public MockInventoryRepository(List<Inventory> inventories)
         {
             _inventories = inventories;
