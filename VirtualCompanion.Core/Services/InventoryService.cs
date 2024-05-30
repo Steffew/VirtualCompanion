@@ -28,22 +28,50 @@ namespace VirtualCompanion.Core.Services
 
         public Inventory GetInventoryByOwnerIdAndItemId(int ownerId, int itemId)
         {
-            return _inventoryRepository.GetByOwnerIdAndItemId(ownerId, itemId);
+            try
+            {
+                return _inventoryRepository.GetByOwnerIdAndItemId(ownerId, itemId);
+            }
+            catch (InventoryException ex)
+            {
+                throw new InventoryException("Retreiving inventory failed, contact administrator", ex);
+            }
         }
 
         public void AddItemToInventory(Inventory inventory)
         {
-            _inventoryRepository.Add(inventory);
+            try
+            {
+                _inventoryRepository.Add(inventory);
+            }
+            catch (InventoryException ex)
+            {
+                throw new InventoryException("Adding item to inventory failed, contact administrator", ex);
+            }
         }
 
         public bool RemoveItemFromInventory(Owner owner, Item item)
         {
-            return _inventoryRepository.Delete(owner.Id, item.Id);
+            try
+            {
+                return _inventoryRepository.Delete(owner.Id, item.Id);
+            }
+            catch (InventoryException ex)
+            {
+                throw new InventoryException("Removing item from inventory failed, contact administrator", ex);
+            }
         }
 
         public bool UpdateInventoryItem(Inventory inventory)
         {
-            return _inventoryRepository.Update(inventory);
+            try
+            {
+                return _inventoryRepository.Update(inventory);
+            }
+            catch (InventoryException ex)
+            {
+                throw new InventoryException("Updating item failed, contact administrator", ex);
+            }
         }
 
         public void UseItem(Owner owner, Item item, int amount)
