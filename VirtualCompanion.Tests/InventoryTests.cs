@@ -1,4 +1,7 @@
 ﻿
+using MySql.Data.MySqlClient;
+using VirtualCompanion.Core.Exceptions;
+
 namespace VirtualCompanion.Test
 {
     public class InventoryTests
@@ -98,5 +101,65 @@ namespace VirtualCompanion.Test
             Assert.DoesNotContain(inventory, inventories);
         }
 
+        [Fact]
+        public void GetAll_ShouldThrowInventoryException_WhenDatabaseConnectionFails()
+        {
+            // Arrange
+            var mockRepository = new MockInventoryRepository(new List<Inventory>(), throwException: true);
+            IInventoryService inventoryService = new InventoryService(mockRepository);
+
+            // Act & Assert
+            Assert.Throws<InventoryException>(() => inventoryService.GetInventoriesByOwnerId(1));
+        }
+
+        // Exceptions
+
+        [Fact]
+        public void GetByOwnerIdAndItemId_ShouldThrowInventoryException_WhenDatabaseConnectionFails()
+        {
+            // Arrange
+            var mockRepository = new MockInventoryRepository(new List<Inventory>(), throwException: true);
+            IInventoryService inventoryService = new InventoryService(mockRepository);
+
+            // Act & Assert
+            Assert.Throws<InventoryException>(() => inventoryService.GetInventoryByOwnerIdAndItemId(1, 1));
+        }
+
+        [Fact]
+        public void Add_ShouldThrowInventoryException_WhenDatabaseConnectionFails()
+        {
+            // Arrange
+            var mockRepository = new MockInventoryRepository(new List<Inventory>(), throwException: true);
+            IInventoryService inventoryService = new InventoryService(mockRepository);
+            var inventory = new Inventory(1, 1, 10, "Test Item");
+
+            // Act & Assert
+            Assert.Throws<InventoryException>(() => inventoryService.AddItemToInventory(inventory));
+        }
+
+        [Fact]
+        public void Update_ShouldThrowInventoryException_WhenDatabaseConnectionFails()
+        {
+            // Arrange
+            var mockRepository = new MockInventoryRepository(new List<Inventory>(), throwException: true);
+            IInventoryService inventoryService = new InventoryService(mockRepository);
+            var inventory = new Inventory(1, 1, 10, "Test Item");
+
+            // Act & Assert
+            Assert.Throws<InventoryException>(() => inventoryService.UpdateInventoryItem(inventory));
+        }
+
+        [Fact]
+        public void Delete_ShouldThrowInventoryException_WhenDatabaseConnectionFails()
+        {
+            // Arrange
+            var mockRepository = new MockInventoryRepository(new List<Inventory>(), throwException: true);
+            IInventoryService inventoryService = new InventoryService(mockRepository);
+            var owner = new Owner(1, 100, 5);
+            var item = new Item(1, "Test Item", 0, 10, 0, 0, 0, 0, 0);
+
+            // Act & Assert
+            Assert.Throws<InventoryException>(() => inventoryService.RemoveItemFromInventory(owner, item));
+        }
     }
 }
