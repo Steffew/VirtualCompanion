@@ -22,7 +22,7 @@ namespace VirtualCompanion.Core.Services
             }
             catch (InventoryException ex)
             {
-                throw ex;
+                throw new InventoryException("Retreiving inventory failed, contact administrator",ex);
             }
         }
 

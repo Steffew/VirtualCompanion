@@ -6,5 +6,10 @@
         {
 
         }
+
+        public InventoryException(string message, Exception innerException) : base(message,innerException)
+        {
+
+        }
     }
 }
