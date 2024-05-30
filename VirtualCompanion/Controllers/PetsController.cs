@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using VirtualCompanion.Core.Exceptions;
 using VirtualCompanion.Core.Interfaces.Service;
 using VirtualCompanion.Models;
 
@@ -16,94 +17,139 @@ namespace VirtualCompanion.Controllers
 
         public IActionResult Index()
         {
-            var petsData = _petService.GetAllPets(ownerId: 1); // OwnerId is hard - coded for now, login system not implemented(yet).
-            var petViewModels = petsData.Select(pet => new PetViewModel
+            try
             {
-                Id = pet.Id,
-                OwnerId = pet.OwnerId,
-                Name = pet.Name,
-                Health = pet.Health,
-                Experience = pet.Experience,
-                Energy = pet.Energy,
-                Mood = pet.Mood,
-                Hunger = pet.Hunger,
-                Hygiene = pet.Hygiene
-            }).ToList();
+                var petsData = _petService.GetAllPets(ownerId: 1); // OwnerId is hard - coded for now, login system not implemented(yet).
+                var petViewModels = petsData.Select(pet => new PetViewModel
+                {
+                    Id = pet.Id,
+                    OwnerId = pet.OwnerId,
+                    Name = pet.Name,
+                    Health = pet.Health,
+                    Experience = pet.Experience,
+                    Energy = pet.Energy,
+                    Mood = pet.Mood,
+                    Hunger = pet.Hunger,
+                    Hygiene = pet.Hygiene
+                }).ToList();
 
-            var model = new PetListViewModel
+                var model = new PetListViewModel
+                {
+                    Pets = petViewModels
+                };
+
+                return View(model);
+            }
+            catch (PetException ex)
             {
-                Pets = petViewModels
-            };
-
-            return View(model);
+                return View("Error", new ErrorViewModel
+                {
+                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+                    Message = ex.Message
+                });
+            }
         }
 
         [HttpGet]
         [Route("Pets/{id}")]
         public IActionResult Pet(int id)
         {
-            var pet = _petService.GetPet(id);
-            if (pet == null)
+            try
             {
-                return NotFound();
+                var pet = _petService.GetPet(id);
+                if (pet == null)
+                {
+                    return NotFound();
+                }
+
+                var petViewModel = new PetViewModel
+                {
+                    Id = pet.Id,
+                    OwnerId = pet.OwnerId,
+                    Name = pet.Name,
+                    Health = pet.Health,
+                    Experience = pet.Experience,
+                    Energy = pet.Energy,
+                    Mood = pet.Mood,
+                    Hunger = pet.Hunger,
+                    Hygiene = pet.Hygiene
+                };
+
+                return View(petViewModel);
             }
-
-            var petViewModel = new PetViewModel
+            catch (PetException ex)
             {
-                Id = pet.Id,
-                OwnerId = pet.OwnerId,
-                Name = pet.Name,
-                Health = pet.Health,
-                Experience = pet.Experience,
-                Energy = pet.Energy,
-                Mood = pet.Mood,
-                Hunger = pet.Hunger,
-                Hygiene = pet.Hygiene
-            };
-
-            return View(petViewModel);
+                return View("Error", new ErrorViewModel
+                {
+                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+                    Message = ex.Message
+                });
+            }
         }
 
         [HttpGet]
         [Route("Pets/Sell/{id}")]
         public IActionResult Sell(int id)
         {
-            var pet = _petService.GetPet(id);
-            if (pet == null)
+            try
             {
-                return NotFound();
+                var pet = _petService.GetPet(id);
+                if (pet == null)
+                {
+                    return NotFound();
+                }
+
+                var petViewModel = new PetViewModel
+                {
+                    Id = pet.Id,
+                    OwnerId = pet.OwnerId,
+                    Name = pet.Name,
+                    Health = pet.Health,
+                    Experience = pet.Experience,
+                    Energy = pet.Energy,
+                    Mood = pet.Mood,
+                    Hunger = pet.Hunger,
+                    Hygiene = pet.Hygiene
+                };
+
+                return View("Sell", petViewModel);
             }
-
-            var petViewModel = new PetViewModel
+            catch (PetException ex)
             {
-                Id = pet.Id,
-                OwnerId = pet.OwnerId,
-                Name = pet.Name,
-                Health = pet.Health,
-                Experience = pet.Experience,
-                Energy = pet.Energy,
-                Mood = pet.Mood,
-                Hunger = pet.Hunger,
-                Hygiene = pet.Hygiene
-            };
-
-            return View("Sell", petViewModel);
+                return View("Error", new ErrorViewModel
+                {
+                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+                    Message = ex.Message
+                });
+            }
         }
 
         [HttpPost]
         [Route("Pets/ConfirmSell/{id}")]
         public IActionResult ConfirmSell(int id)
         {
-            bool result = _petService.DeletePet(id);
-            if (result)
+
+            try
             {
-                TempData["Message"] = "Pet successfully sold.";
-                return RedirectToAction("Index");
+                bool result = _petService.DeletePet(id);
+                if (result)
+                {
+                    TempData["Message"] = "Pet successfully sold.";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["Error"] = "Error selling pet.";
+                    return RedirectToAction("Pet", new { id = id });
+                }
             }
-            else
+            catch (PetException ex)
             {
-                TempData["Error"] = "Error selling pet.";
-                return RedirectToAction("Pet", new { id = id });
+                return View("Error", new ErrorViewModel
+                {
+                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+                    Message = ex.Message
+                });
             }
         }
 
